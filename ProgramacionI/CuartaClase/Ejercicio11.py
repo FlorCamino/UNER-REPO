@@ -7,4 +7,4 @@ de texto ingresada por el usuario '''
 
 texto_ingresado = input("Por favor, ingrese el texto: ")
 
-print(texto_ingresado[0:5] )
+print(texto_ingresado[:5] )

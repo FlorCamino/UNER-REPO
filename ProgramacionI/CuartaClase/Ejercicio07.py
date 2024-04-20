@@ -11,5 +11,5 @@ calcularHoras = numeroDias * 12
 calcularMinutos = calcularHoras * 60
 calcularSegundos = calcularMinutos * 60
 
-print("El número de ", numeroDias, " días, representa un total de ", calcularHoras,"hs, ", calcularMinutos,"min y ", calcularSegundos, "seg.")
+print("El número de", numeroDias, "días, representa un total de", calcularHoras,"hs,",calcularMinutos,"min y",calcularSegundos, "seg.")
 

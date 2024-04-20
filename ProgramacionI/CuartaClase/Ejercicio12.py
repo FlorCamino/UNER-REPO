@@ -13,4 +13,4 @@ dia = fecha_ingresada[0:2]
 mes = fecha_ingresada[3:5]
 anio = fecha_ingresada[6:11]
 
-print("Día: ",dia,", Mes: ", mes,"y Año: ",anio)
+print("Día:",dia,", Mes:", mes,"y Año:",anio)

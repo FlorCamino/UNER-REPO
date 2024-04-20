@@ -10,4 +10,4 @@ alturaTriangulo = float(input("Ahora, ingrese la altura del triángulo: "))
 
 superficieTriangulo = (baseTriangulo * alturaTriangulo) / 2
 
-print("La superficie del triángulo es", superficieTriangulo, "cm2")
+print("La superficie del triángulo es", superficieTriangulo,"cm2")
