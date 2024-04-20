@@ -7,10 +7,10 @@ Programa imprime: Día: 17, Mes: 05 y Año: 1985 '''
 
 # Solución
 
-fechaIngresada = input("Por favor, ingrese una fecha con el siguiente formato (dd/mm/aaaa): ")
+fecha_ingresada = input("Por favor, ingrese una fecha con el siguiente formato (dd/mm/aaaa): ")
 
-dia = fechaIngresada[0:2]
-mes = fechaIngresada[3:5]
-anio = fechaIngresada[6:11]
+dia = fecha_ingresada[0:2]
+mes = fecha_ingresada[3:5]
+anio = fecha_ingresada[6:11]
 
-print(f"Día: {dia}, Mes: {mes} y Año: {anio}")
+print("Día: ",dia,", Mes: ", mes,"y Año: ",anio)

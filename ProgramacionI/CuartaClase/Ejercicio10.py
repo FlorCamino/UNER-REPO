@@ -5,10 +5,8 @@ derecho que al revés. Por ejemplo: rayar, kayak, somos '''
 
 # Solución
 
-textoIngresado = input("Por favor, ingrese el texto: ").lower()
-textoInvertido = textoIngresado.lower()[::-1]
+texto_ingresado = input("Por favor, ingrese el texto: ").lower();
+texto_invertido = texto_ingresado[::-1]
 
-if textoInvertido == textoIngresado:
-    print("Es un texto palíndromo")
-else: 
-    print("No es un texto palíndromo")
+es_palindromo = texto_ingresado == texto_invertido
+print("Es un texto palíndromo:" , es_palindromo)

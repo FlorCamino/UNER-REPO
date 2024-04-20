@@ -5,6 +5,6 @@ salida “Hola nombre apellido”. '''
 
 # Solución
 
-nombreUsuario = input("Por favor, indique su nombre: ")
-apellidoUsuario = input("Ahora, indique su apellido: ")
-print(f"Hola {nombreUsuario} {apellidoUsuario}")
+nombre_usuario = input("Por favor, indique su nombre: ")
+apellido_usuario = input("Ahora, indique su apellido: ")
+print("Hola", nombre_usuario, apellido_usuario)

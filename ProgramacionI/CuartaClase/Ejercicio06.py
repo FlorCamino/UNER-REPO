@@ -6,9 +6,9 @@ número de comensales y mostrar cuánto debe pagar cada persona '''
 
 # Solución
 
-precioTotalCuenta = float(input("Por favor, ingrese el monto total de la cuenta: "))
-cantidadComensales = int(input("Ahora, indique la cantidad de comensales: "))
+precio_total_cuenta = float(input("Por favor, ingrese el monto total de la cuenta: "))
+cantidad_comensales = int(input("Ahora, indique la cantidad de comensales: "))
 
-precioPorPersona = precioTotalCuenta / cantidadComensales
+precio_por_persona = precio_total_cuenta / cantidad_comensales
 
-print(f"Cada comensal deberá pagar el monto de ${precioPorPersona:.2f}")
+print("Cada comensal deberá pagar el monto de $", precio_por_persona)

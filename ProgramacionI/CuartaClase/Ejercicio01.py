@@ -4,5 +4,5 @@
 
 # Solución
 
-saludoPhyton = "“Hola Mundo, esto es Python!”."
-print(saludoPhyton)
+saludo_phyton = "“Hola Mundo, esto es Python!”."
+print(saludo_phyton)

@@ -5,5 +5,5 @@
 
 # Solución
 
-nombreUsuario = input("Por favor, indique su nombre: ")
-print(f"Hola {nombreUsuario}")
+nombre_usuario = input("Por favor, indique su nombre: ")
+print("Hola",nombre_usuario)

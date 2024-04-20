@@ -5,9 +5,9 @@ respuesta es XX” '''
 
 # Solución
 
-primerNumero = int(input("Por favor, ingrese el primer número: "))
-segundoNumero = int(input("Ingrese el segundo número: "))
+primer_numero = int(input("Por favor, ingrese el primer número: "))
+segundo_numero = int(input("Ingrese el segundo número: "))
 
-resultadoSuma = primerNumero + segundoNumero
+resultado_suma = primer_numero + segundo_numero
 
-print(f"La respuesta es {resultadoSuma}")
+print("La respuesta es", resultado_suma)

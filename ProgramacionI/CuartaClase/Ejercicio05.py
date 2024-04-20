@@ -6,11 +6,11 @@ forma: “La respuesta es XX” '''
 
 # Solución
 
+primer_numero = int(input("Por favor, ingrese el primer número: "))
+segundo_numero = int(input("Ingrese el segundo número: "))
+tercer_numero = int(input("Ahora, ingrese el tercer número: "))
 
-primerNumero = int(input("Por favor, ingrese el primer número: "))
-segundoNumero = int(input("Ingrese el segundo número: "))
-tercerNumero = int(input("Ahora, ingrese el tercer número: "))
+resultado_final = (primer_numero + segundo_numero) 
+resultado_final = resultado_final * tercer_numero
 
-resultadoFinal = (primerNumero + segundoNumero) * tercerNumero
-
-print(f"La respuesta es {resultadoFinal}")
+print("La respuesta es",resultado_final)

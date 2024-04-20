@@ -7,16 +7,12 @@ usuario y contraseña. Por ejemplo: nombre: Martín, apellido: Francisconi, Año
 
 # Solución
 
-nombreUsuario = input("Por favor, indique su nombre: ")
-apellidoUsuario = input("Indique su apellido: ")
-anioNacimiento = input("Ahora, ingrese su año de nacimiento: ")
+nombre_usuario = input("Por favor, indique su nombre: ")
+apellido_usuario = input("Indique su apellido: ")
+anio_nacimiento = input("Ahora, ingrese su año de nacimiento: ")
 
-inputSugerencia = f"Nombre: {nombreUsuario}\n"
-inputSugerencia += f"Apellido: {apellidoUsuario}\n"
-inputSugerencia += f"Año nacimiento: {anioNacimiento}\n"
-inputSugerencia += f"Usuario: {nombreUsuario[0]}{apellidoUsuario}\n"
-inputSugerencia += f"Contraseña: {nombreUsuario[0]}{apellidoUsuario[0]}.{anioNacimiento}"
 
-print(inputSugerencia)
+print("Usuario: " + nombre_usuario[0] + apellido_usuario)
+print("Contraseña: " + nombre_usuario[0] + apellido_usuario[0] + "." + str(anio_nacimiento))
 
                 

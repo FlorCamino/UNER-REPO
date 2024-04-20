@@ -4,6 +4,6 @@
 
 # Solución
 
-textoIngresado = input("Por favor, ingrese un texto: ")
+texto_ingresado = input("Por favor, ingrese un texto: ")
 
-print(textoIngresado[::-1])
+print(texto_ingresado[::-1])

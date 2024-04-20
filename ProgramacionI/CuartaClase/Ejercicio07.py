@@ -7,9 +7,9 @@ segundos son esos números de días '''
 
 numeroDias = int(input("Por favor, ingrese el número de dias que desea calcular: "))
 
-calcularHoras = (numeroDias * 12)
+calcularHoras = numeroDias * 12
 calcularMinutos = calcularHoras * 60
 calcularSegundos = calcularMinutos * 60
 
-print(f"El número de {numeroDias} días, representa un total de {calcularHoras}hs, {calcularMinutos}min y {calcularSegundos}seg.")
+print("El número de ", numeroDias, " días, representa un total de ", calcularHoras,"hs, ", calcularMinutos,"min y ", calcularSegundos, "seg.")
 
