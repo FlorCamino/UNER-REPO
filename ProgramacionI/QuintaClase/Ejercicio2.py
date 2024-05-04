@@ -1,4 +1,4 @@
-
+# Consigna
 # Que reciba un número entero positivo y una potencia a elevar y que nos devuelva el resultado.
 
 def calcular_potencia(base, exponente): # Función que recibe como parámetros base y exponente,

@@ -1,4 +1,4 @@
-
+# Consigna
 # Que dada la base y altura de un triángulo nos calcule su área.
 
 def calcular_area(base, altura):        # Función que calcula el área y recibe como parámetros

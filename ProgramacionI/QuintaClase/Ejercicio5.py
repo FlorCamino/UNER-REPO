@@ -1,4 +1,4 @@
-
+# Consigna
 # Que dado tres números ingresados por el usuario nos devuelva el promedio.
 
 def resultado_promedio(primer_valor, segundo_valor, tercer_valor): # Función que recibe 3 valores numericos como parámetros
