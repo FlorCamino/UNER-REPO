@@ -3,11 +3,10 @@
 
 def saludo(nombre):
     if nombre.isalpha():
-        print(f"¡Hola {nombre}!") #Imprimo el valor de nombre cuando el mismo es un valor de tipo alfabético
+        print(f"¡Hola {nombre}!") 
     else: 
-        print("¡Error! El nombre no debe contener números ni caracteres especiales.") # Muestro mensaje de error
-        saludo(input("Por favor indiquenos su nombre: ")) # Se instancia nuevamente la función para que se ejecute 
-                                                          # hasta que indique un valor correcto
+        print("¡Error! El nombre no debe contener números ni caracteres especiales.") 
+        saludo(input("Por favor indiquenos su nombre: ")) 
     
   
-saludo(input("Por favor indiquenos su nombre: "))  # Instancia de la función para que se ejecute
+saludo(input("Por favor indiquenos su nombre: "))  
