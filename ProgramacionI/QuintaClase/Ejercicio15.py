@@ -5,6 +5,8 @@
 # informarle que no se puede procesar el dato.
 
 def es_vocal(letra):  
+    print("---------------------------------")
+    print("-------- Resultado Final --------")    
     if letra in "aeiou":
         print("Es vocal")
     else:
@@ -18,7 +20,7 @@ while continuar_ejecucion:
     if len(letra_ingresada) == 1:
         es_vocal(letra_ingresada)  
     else:
-        print("¡Error! Usted ha ingresado mas de un caracter, la ejecución finalizará")
+        print("¡Error! Usted ha ingresado una cantidad no permitida de caracteres, fin de la ejecución")
         exit()       
 
     desea_continuar = input("¿Desea continuar ingresando valores? (SI/NO) ").lower()    

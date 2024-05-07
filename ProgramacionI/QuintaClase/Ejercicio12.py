@@ -5,11 +5,10 @@
 # mensaje diferente si es viernes, otro mensaje diferente si es sábado o domingo. Si el día
 # ingresado no es ninguno de esos, imprimir otro mensaje.
 
-continuar_ejecucion = True                                                             
-while continuar_ejecucion:                                                             
-    dia_semana = input("Por favor, ingrese el nombre de un día de la semana: ").lower()
-    
-    match dia_semana:                                                                  
+def retornar_dia_semana(dia_ingresado):
+    print("---------------------------------")
+    print("-------- Resultado Final --------") 
+    match dia_ingresado:                                                                  
         case "lunes":
             print("Usted ha ingresado Lunes")                                          
         case "martes":
@@ -25,7 +24,16 @@ while continuar_ejecucion:
         case "domingo":
             print("Usted ha ingresado Domingo")                                        
         case _:
-            print("El valor que ingreso no corresponde a un día de la semana")         
+            print("El valor que ingreso no corresponde a un día de la semana")
+
+continuar_ejecucion = True                                                             
+while continuar_ejecucion:                                                             
+    dia_semana = input("Por favor, ingrese el nombre de un día de la semana: ").lower()
+    
+    if dia_semana.strip() != "":
+        retornar_dia_semana(dia_semana)
+    else:
+        print("Debe ingresar un dia de la semana, por favor, vuelta a intentarlo.")        
 
     desea_continuar = input("¿Desea continuar ingresando valores? (SI/NO) ").lower()   
                                                                                        

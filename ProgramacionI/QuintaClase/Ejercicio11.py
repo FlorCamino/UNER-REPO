@@ -3,15 +3,25 @@
 # Que solicite al usuario ingresar una frase. Luego, que imprima la cantidad de vocales que se
 # encuentran en dicha frase.
 
+    
+def contar_vocales(frase):
+    contador = 0                                                      
+    for letra in frase:                                      
+        if letra in "aeiou":                                          
+            contador += 1  
+    print("---------------------------------")
+    print("-------- Resultado Final --------")                                           
+    print(f"La frase '{frase}' contiene un total de {contador} vocales")   
+
+
 continuar_ejecucion = True                                            
 while continuar_ejecucion:                                            
     frase_ingresada = input("Por favor, ingrese una frase: ").lower() 
-    contador = 0                                                      
-
-    for letra in frase_ingresada:                                      
-        if letra in "aeiou":                                          
-            contador += 1                                             
-    print(f"La frase '{frase_ingresada}' contiene un total de {contador} vocales")     
+    
+    if frase_ingresada.strip() != "":
+        contar_vocales(frase_ingresada) 
+    else:
+        print("El campo no puede ser nulo, por favor, vuelva a intentarlo.")
     
     desea_continuar = input("¿Desea continuar comparando números? (SI/NO) ").lower()   
                                                                                        

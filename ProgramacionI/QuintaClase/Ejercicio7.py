@@ -3,10 +3,10 @@
 
 numero = 100 + 1                    
 contador = 0                       
-
+print("-----------------------------------------------------------")
+print("--------------------- Resultado Final ---------------------") 
 while numero < 199:                 
-    print(str(numero).rjust(5), end=" ") 
-                                         
+    print(str(numero).rjust(5), end=" ")                                     
     numero += 1                          
     contador += 1                        
     if contador == 10:                   

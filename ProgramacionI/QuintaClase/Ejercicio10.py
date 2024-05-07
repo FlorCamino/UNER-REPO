@@ -8,7 +8,7 @@
 
 continuar_ejecucion = True                              
 
-def numeros_impares(numero_ingresado):                  
+def numeros_impares(numero_ingresado):                 
     primer_iteracion = True                            
     for numero in range(1, numero_ingresado + 1):       
         if numero % 2 != 0:                             
@@ -53,12 +53,16 @@ def factorial(numero_ingresado):
 while continuar_ejecucion:                                             
     numero_del_usuario = int(input("Por favor, ingrese un número: \n"))
 
+    print("-------------------------------")
     print("------- Números impares -------\n")                          
-    numeros_impares(numero_del_usuario)                                  
+    numeros_impares(numero_del_usuario) 
+    print("--------------------------------")                                 
     print("------- Números al revés -------\n")                         
-    cuenta_atras(numero_del_usuario)                                    
+    cuenta_atras(numero_del_usuario)
+    print("------------------------")                                    
     print("------- Es primo -------\n")                                 
-    es_primo = indicar_numero_primo(numero_del_usuario)                 
+    es_primo = indicar_numero_primo(numero_del_usuario)
+    print("-------------------------")                 
     print("------- Factorial -------\n")                                
     su_factorial = factorial(numero_del_usuario)                       
     

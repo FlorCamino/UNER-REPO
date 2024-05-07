@@ -5,7 +5,9 @@
 
 continuar_ejecucion = True                                                  
 
-def comparar_numeros(primer_numero, segundo_numero):                        
+def comparar_numeros(primer_numero, segundo_numero):
+    print("---------------------------------")
+    print("-------- Resultado Final --------")                           
     if primer_numero > segundo_numero:                                     
         print(f"El número {primer_numero} es mayor que {segundo_numero}")   
     elif primer_numero < segundo_numero:                                    

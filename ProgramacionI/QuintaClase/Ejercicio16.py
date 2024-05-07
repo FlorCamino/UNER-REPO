@@ -7,6 +7,7 @@
 #       1
         
 def  imprimir_patron(numero_ingresado):
+    print("----------------------------")
     print("------- Patrón final -------")
     for inicio in range(numero_ingresado, 0, -1): 
         for resto in range(inicio, 0, -1):
@@ -16,9 +17,9 @@ def  imprimir_patron(numero_ingresado):
 continuar_ejecucion = True                                                                          
 while continuar_ejecucion:             
 
-    numero_ingresado = int(input("Por favor, ingrese un número: "))
+    NUMERO_INGRESADO = 5
     
-    imprimir_patron(numero_ingresado)   
+    imprimir_patron(NUMERO_INGRESADO)   
 
     desea_continuar = input("¿Desea continuar ingresando valores? (SI/NO) ").lower()    
                                                                                        
