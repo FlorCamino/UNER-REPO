@@ -51,20 +51,23 @@ def factorial(numero_ingresado):
 
     
 while continuar_ejecucion:                                             
-    numero_del_usuario = int(input("Por favor, ingrese un número: \n"))
+    numero_del_usuario = int(input("Por favor, ingrese un número mayor a cero: \n"))
 
-    print("-------------------------------")
-    print("------- Números impares -------\n")                          
-    numeros_impares(numero_del_usuario) 
-    print("--------------------------------")                                 
-    print("------- Números al revés -------\n")                         
-    cuenta_atras(numero_del_usuario)
-    print("------------------------")                                    
-    print("------- Es primo -------\n")                                 
-    es_primo = indicar_numero_primo(numero_del_usuario)
-    print("-------------------------")                 
-    print("------- Factorial -------\n")                                
-    su_factorial = factorial(numero_del_usuario)                       
+    if (numero_del_usuario > 0):
+        print("-------------------------------")
+        print("------- Números impares -------\n")                          
+        numeros_impares(numero_del_usuario) 
+        print("--------------------------------")                                 
+        print("------- Números al revés -------\n")                         
+        cuenta_atras(numero_del_usuario)
+        print("------------------------")                                    
+        print("------- Es primo -------\n")                                 
+        es_primo = indicar_numero_primo(numero_del_usuario)
+        print("-------------------------")                 
+        print("------- Factorial -------\n")                                
+        su_factorial = factorial(numero_del_usuario)
+    else:
+        print(f"¡Error! El número ingresado [{numero_del_usuario}] NO es positivo")                       
     
     desea_continuar = input("¿Desea continuar ejecutando el programa? (SI/NO) \n")   
                                                                                     

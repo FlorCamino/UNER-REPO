@@ -7,7 +7,7 @@
 def contar_vocales(frase):
     contador = 0                                                      
     for letra in frase:                                      
-        if letra in "aeiou":                                          
+        if letra in "aeiouáéíóú":                                          
             contador += 1  
     print("---------------------------------")
     print("-------- Resultado Final --------")                                           
