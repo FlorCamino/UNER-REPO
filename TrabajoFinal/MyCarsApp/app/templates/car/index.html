@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            align-items: center;
+            display: flex;
+            justify-content: left;
+        }
+        header img {
+            margin-right: 10px;
+            height: 50px;
+            width: auto;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            flex: 1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button {
+            padding: 5px 10px;
+            margin: 0;
+            text-decoration: none;
+            border: 1px solid black;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .button-update {
+            background-color: #2196F3;
+        }
+        .button-delete {
+            background-color: #f44336;
+        }
+        footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        .add-button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .actions {
+            display: flex;
+            gap: 5px;
+        }
+        .container {
+            border: 1px solid black;
+            padding: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/car_image.png') }}" alt="AppCar Logo">
+        <h2>AppCar</h2>
+    </header>
+    <main>
+        <div class="container">
+            <div class="header-container">
+                <h1>Vehículos</h1>
+                <a class="add-button" href="{{ url_for('store_car') }}">Agregar un nuevo vehículo</a>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patente</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Tipo</th>
+                    <th>Año</th>
+                    <th>Kilometraje</th>
+                    <th>Precio de Compra</th>
+                    <th>Precio de Venta</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                    <tr>
+                        <td>{{ car.patente }}</td>
+                        <td>{{ car.marca }}</td>
+                        <td>{{ car.modelo }}</td>
+                        <td>{{ car.tipo }}</td>
+                        <td>{{ car.anio }}</td>
+                        <td>{{ car.kilometraje }}</td>
+                        <td>US${{ car.precio_compra }}</td>
+                        <td>US${{ car.precio_venta }}</td>
+                        <td>{{ car.estado }}</td>
+                        <td>
+                            <a class="button button-update" href="{{ url_for('update_car', car_id=car.id_vehiculo) }}">Actualizar</a>
+                            <a class="button button-delete" href="{{ url_for('delete_car', car_id=car.id_vehiculo) }}">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <ul>
+            <li>Alumna: Beatriz Beatriz Camino </li>
+            <li>Fecha: 22/06/2024 | Materia: Programación I | Trabajo Final Integrador</li>
+            <li>Profesores: Francisconi Martín | Pineda Fabián | Bidart Franchi Alex | Ruis Dias Franco</li>
+        </ul>
+    </footer>
+</body>
+</html>

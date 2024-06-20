@@ -1,0 +1,53 @@
+{
+    "cars": [
+        {
+            "patente": "ABC721",
+            "marca": "Chevrolet",
+            "modelo": "S10",
+            "tipo": "Pickup",
+            "anio": 2019,
+            "kilometraje": 90000,
+            "precio_compra": 50000,
+            "precio_venta": 75000,
+            "estado": "Reservado",
+            "id_vehiculo": 1
+        },
+        {
+            "patente": "XYZ789",
+            "marca": "Ford",
+            "modelo": "Focus",
+            "tipo": "Hatchback",
+            "anio": 2017,
+            "kilometraje": 50000,
+            "precio_compra": 14000,
+            "precio_venta": 72000,
+            "estado": "Vendido",
+            "id_vehiculo": 3
+        },
+        {
+            "patente": "TDX865",
+            "marca": "Ford",
+            "modelo": "Fiesta",
+            "tipo": "Hatchback",
+            "anio": 2003,
+            "kilometraje": 130000,
+            "precio_compra": 7000,
+            "precio_venta": 8000,
+            "estado": "Vendido",
+            "id_vehiculo": 5
+        },
+        {
+            "patente": "IVE733",
+            "marca": "Peugeot",
+            "modelo": "207",
+            "tipo": "Sed\u00e1n",
+            "anio": 2019,
+            "kilometraje": 60000,
+            "precio_compra": 12000,
+            "precio_venta": 15000,
+            "estado": "Disponible",
+            "id_vehiculo": 6
+        }
+    ],
+    "last_id": 6
+}
