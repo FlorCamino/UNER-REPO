@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Cliente{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/store.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Agregar Cliente</h1>
+        <form action="{{ url_for('store_customer') }}" method="post">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br>
+            <label for="apellido">Apellido:</label><br>
+            <input type="text" id="apellido" name="apellido"><br>
+            <label for="documento">Documento:</label><br>
+            <input type="text" id="documento" name="documento"><br>
+            <label for="direccion">Dirección:</label><br>
+            <input type="text" id="direccion" name="direccion"><br>
+            <label for="telefono">Teléfono:</label><br>
+            <input type="text" id="telefono" name="telefono"><br>
+            <label for="correo_electronico">Correo Electrónico:</label><br>
+            <input type="email" id="correo_electronico" name="correo_electronico"><br><br>
+            <div class="button-container">
+                <a class="back-button" href="{{ url_for('customers') }}">Volver</a>
+                <button type="submit" class="store-button">Guardar</button>
+            </div>
+        </form>
+{% endblock %}
+
+

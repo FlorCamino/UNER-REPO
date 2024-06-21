@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header-container">
+        <h1>Clientes</h1>
+        <a class="add-button" href="{{ url_for('store_customer') }}">Agregar un nuevo cliente</a>
+    </div>
+</div>
+<div class="search-container">
+    <form action="{{ url_for('customers') }}" method="get">
+        <input type="text" name="documento" placeholder="Buscar por documento">
+        <input type="text" name="apellido" placeholder="Buscar por apellido">
+        <input type="text" name="nombre" placeholder="Buscar por nombre">
+        <button type="submit">Buscar</button>
+        <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('customers') }}'">Limpiar</button>
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Documento</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Correo Electrónico</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td>{{ customer.nombre }}</td>
+                <td>{{ customer.apellido }}</td>
+                <td>{{ customer.documento }}</td>
+                <td>{{ customer.direccion }}</td>
+                <td>{{ customer.telefono }}</td>
+                <td>{{ customer.correo_electronico }}</td>
+                <td class="actions">
+                    <a class="button button-update" href="{{ url_for('update_customer', customer_id=customer.id_cliente) }}">Actualizar</a>
+                    <a class="button button-delete" href="{{ url_for('delete_customer', customer_id=customer.id_cliente) }}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

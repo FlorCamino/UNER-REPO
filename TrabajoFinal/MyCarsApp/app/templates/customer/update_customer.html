@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Actualizar Cliente{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/update.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1 class="header-container">Actualizar Cliente</h1>
+        <form action="{{ url_for('update_customer', customer_id=customer.id_cliente) }}" method="post">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" value="{{ customer.nombre }}"><br>
+            <label for="apellido">Apellido:</label><br>
+            <input type="text" id="apellido" name="apellido" value="{{ customer.apellido }}"><br>
+            <label for="documento">Documento:</label><br>
+            <input type="text" id="documento" name="documento" value="{{ customer.documento }}"><br>
+            <label for="direccion">Dirección:</label><br>
+            <input type="text" id="direccion" name="direccion" value="{{ customer.direccion }}"><br>
+            <label for="telefono">Teléfono:</label><br>
+            <input type="text" id="telefono" name="telefono" value="{{ customer.telefono }}"><br>
+            <label for="correo_electronico">Correo Electrónico:</label><br>
+            <input type="email" id="correo_electronico" name="correo_electronico" value="{{ customer.correo_electronico }}"><br><br>
+            <div class="button-container">
+                <a class="back-button" href="{{ url_for('customers') }}">Volver</a>
+                <button type="submit" class="update-button">Actualizar</button>
+            </div>
+        </form>
+{% endblock %}
+
+
+

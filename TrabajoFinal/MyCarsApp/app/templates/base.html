@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AppCar{% endblock %}</title>
+    <script>
+        function goToHome() {
+            window.location.href = "{{ url_for('home') }}";
+        }
+        function logout() {
+            window.location.href = "{{ url_for('logout') }}";
+        }
+    </script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/car_image.png') }}" alt="AppCar Logo">
+        <h2>AppCar 
+            <span class="home-link" onclick="goToHome()">Inicio</span>
+            <span class="logout-link" onclick="logout()">Cerrar sesión</span></h2>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <ul>
+            <li>Alumna: Beatriz Beatriz Camino </li>
+            <li>Fecha: 22/06/2024 | Materia: Programación I | Trabajo Final Integrador</li>
+            <li>Profesores: Francisconi Martín | Pineda Fabián | Bidart Franchi Alex | Ruis Dias Franco</li>
+        </ul>
+    </footer>
+</body>
+</html>

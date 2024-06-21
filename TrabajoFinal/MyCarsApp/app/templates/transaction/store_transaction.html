@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Transacción{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/store.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Agregar Transacción</h1>
+        <form action="{{ url_for('store_transaction') }}" method="post">
+            <label for="id_vehiculo">ID Vehículo:</label><br>
+            <input type="number" id="id_vehiculo" name="id_vehiculo"><br>
+            <label for="id_cliente">ID Cliente:</label><br>
+            <input type="number" id="id_cliente" name="id_cliente"><br>
+            <label for="tipo_transaccion">Tipo de Transacción:</label><br>
+            <input type="text" id="tipo_transaccion" name="tipo_transaccion"><br>
+            <label for="fecha">Fecha:</label><br>
+            <input type="date" id="fecha" name="fecha"><br>
+            <label for="monto">Monto:</label><br>
+            <input type="number" id="monto" name="monto" step="0.01"><br>
+            <label for="observaciones">Observaciones:</label><br>
+            <input type="text" id="observaciones" name="observaciones"><br><br>
+            <div class="button-container">
+                <a class="back-button" href="{{ url_for('transactions') }}">Volver</a>
+                <button type="submit" class="store-button">Guardar</button>
+            </div>
+        </form>
+{% endblock %}
+
+
+

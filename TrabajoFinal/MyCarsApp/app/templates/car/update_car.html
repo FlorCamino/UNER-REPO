@@ -1,117 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Vehículo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 40px;
-            text-align: left;
-            display: flex;
-            align-items: center;
-        }
-        header img {
-            margin-right: 10px;
-            height: 50px;
-            width: auto;
-        }
-        header h2 {
-            margin: 0;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        main {
-            flex: 1;
-            padding: 20px;
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        h1 {
-            flex: 1;
-        }
-        footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        footer ul {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="number"] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .back-button {
-            background-color: #6c757d;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-            text-decoration: none;
-        }
-        .back-button:hover {
-            background-color: #5a6268;
-        }
-        .update-button {
-            background-color: #2196F3;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-            text-decoration: none;
-        }
-        .update-button:hover {
-            background-color: #1e88e5;
-        }
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <img src="{{ url_for('static', filename='images/car_image.png') }}" alt="AppCar Logo">
-        <h2>AppCar</h2>
-    </header>
-    <main>
-        <h1 class="header-container">Actualizar Vehículo</h1>
+{% extends "base.html" %}
+
+{% block title %}Actualizar Vehículo{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/update.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1 class="header-container">Actualizar Vehículo</h1>
         <form action="{{ url_for('update_car', car_id=car.id_vehiculo) }}" method="post">
             <label for="patente">Patente:</label><br>
             <input type="text" id="patente" name="patente" value="{{ car.patente }}"><br>
@@ -136,17 +32,12 @@
             <label for="estado">Estado:</label><br>
             <input type="text" id="estado" name="estado" value="{{ car.estado }}"><br><br>
             <div class="button-container">
-                <a class="back-button" href="{{ url_for('index') }}">Volver</a>
+                <a class="back-button" href="{{ url_for('cars') }}">Volver</a>
                 <button type="submit" class="update-button">Actualizar</button>
             </div>
         </form>
-    </main>
-    <footer>
-        <ul>
-            <li>Alumna: Beatriz Beatriz Camino </li>
-            <li>Fecha: 22/06/2024 | Materia: Programación I | Trabajo Final Integrador</li>
-            <li>Profesores: Francisconi Martín | Pineda Fabián | Bidart Franchi Alex | Ruis Dias Franco</li>
-        </ul>
-    </footer>
-</body>
-</html>
+{% endblock %}
+
+
+
+

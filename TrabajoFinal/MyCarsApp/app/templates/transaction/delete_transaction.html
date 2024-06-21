@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Transacción{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/delete.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <h1>Eliminar Transacción</h1>
+    <p>¿Estás seguro de que deseas eliminar la transacción de tipo {{ transaction.tipo_transaccion }} realizada el {{ transaction.fecha }} con un monto de US${{ transaction.monto }}?</p>
+    <form action="{{ url_for('delete_transaction', transaction_id=transaction.id_transaccion) }}" method="post">
+        <a href="{{ url_for('transactions') }}">Cancelar</a>
+        <input type="submit" value="Eliminar">
+    </form>
+</div>
+{% endblock %}
+

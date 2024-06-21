@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Cliente{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/delete.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <h1>Eliminar Cliente</h1>
+    <p>¿Estás seguro de que deseas eliminar al cliente {{ customer.nombre }} {{ customer.apellido }} con el documento {{ customer.documento }}?</p>
+    <form action="{{ url_for('delete_customer', customer_id=customer.id_cliente) }}" method="post">
+        <a href="{{ url_for('customers') }}">Cancelar</a>
+        <input type="submit" value="Eliminar">
+    </form>
+</div>
+{% endblock %}
