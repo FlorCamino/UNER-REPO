@@ -40,8 +40,16 @@
             "monto": 14000.0,
             "observaciones": "Compra registrada.",
             "vehiculo": {
-                "marca": "Desconocido",
-                "modelo": ""
+                "patente": "TDX865",
+                "marca": "Ford",
+                "modelo": "Fiesta",
+                "tipo": "Hatchback",
+                "anio": 2003,
+                "kilometraje": 130000,
+                "precio_compra": 7000,
+                "precio_venta": 8000,
+                "estado": "Vendido",
+                "id_vehiculo": 5
             },
             "cliente": {
                 "id_cliente": 2,
@@ -80,7 +88,7 @@
                 "documento": "23928329",
                 "direccion": "peru 418",
                 "telefono": "744-482",
-                "correo_electronico": "flopiis.uner@gmail.com",
+                "correo_electronico": "flor.camino@gmail.com",
                 "id_cliente": 3
             },
             "fecha_formateada": "21-06-2024"
@@ -91,7 +99,7 @@
             "tipo_transaccion": "Compra",
             "fecha": "2024-06-13",
             "monto": 39000.0,
-            "observaciones": "Este es un ejemplo",
+            "observaciones": "Esta es una prueba",
             "id_transaccion": 6,
             "vehiculo": {
                 "patente": "XAP156",
@@ -117,5 +125,5 @@
             "fecha_formateada": "13-06-2024"
         }
     ],
-    "last_id": 6
+    "last_id": 7
 }

@@ -8,7 +8,7 @@ AppCar es una aplicación web para gestionar vehículos, clientes y transaccione
   - Agregar un nuevo vehículo.
   - Actualizar información de un vehículo existente.
   - Eliminar un vehículo.
-  - Buscar vehículos por patente, marca, modelo, año, precio de compra y precio de venta.
+  - Buscar vehículos por patente, marca, modelo, precio de compra y precio de venta.
 
 - Gestión de Clientes
   - Agregar un nuevo cliente.
