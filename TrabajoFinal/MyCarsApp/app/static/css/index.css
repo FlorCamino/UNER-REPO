@@ -147,3 +147,22 @@ header .home-link {
     border-radius: 4px; 
     transition: background-color 0.3s, color 0.3s;
 }
+.flash-success {
+    color: green;
+    padding: 10px;
+    border: 1px solid green;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.flash-danger {
+    color: red;
+    padding: 10px;
+    border: 1px solid red;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.flashes {
+    list-style: none;
+    padding: 0;
+}
+

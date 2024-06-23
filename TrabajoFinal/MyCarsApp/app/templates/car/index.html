@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Vehículo{% endblock %}
+{% block title %}Vehículos{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
@@ -12,53 +12,67 @@
         <h1>Vehículos</h1>
         <a class="add-button" href="{{ url_for('store_car') }}">Agregar un nuevo vehículo</a>
     </div>
-</div>
-<div class="search-container">
-    <form action="{{ url_for('cars') }}" method="get">
-        <input type="text" name="patente" placeholder="Buscar por patente">
-        <input type="text" name="marca" placeholder="Buscar por marca">
-        <input type="text" name="modelo" placeholder="Buscar por modelo">
-        <input type="number" name="precio_compra_min" placeholder="Precio de compra mínimo">
-        <input type="number" name="precio_compra_max" placeholder="Precio de compra máximo">
-        <input type="number" name="precio_venta_min" placeholder="Precio de venta mínimo">
-        <input type="number" name="precio_venta_max" placeholder="Precio de venta máximo">
-        <button type="submit">Buscar</button>
-        <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('cars') }}'">Limpiar</button>
-    </form>
-</div>
-<table>
-    <thead>
-        <tr>
-            <th>Patente</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Tipo</th>
-            <th>Año</th>
-            <th>Kilometraje</th>
-            <th>Precio de Compra</th>
-            <th>Precio de Venta</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for car in cars %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class="search-container">
+        <form action="{{ url_for('cars') }}" method="get">
+            <input type="text" name="patente" placeholder="Buscar por patente">
+            <input type="text" name="marca" placeholder="Buscar por marca">
+            <input type="text" name="modelo" placeholder="Buscar por modelo">
+            <input type="number" name="precio_compra_min" placeholder="Precio de compra mínimo">
+            <input type="number" name="precio_compra_max" placeholder="Precio de compra máximo">
+            <input type="number" name="precio_venta_min" placeholder="Precio de venta mínimo">
+            <input type="number" name="precio_venta_max" placeholder="Precio de venta máximo">
+            <input type="number" name="anio_min" placeholder="Año mínimo">
+            <input type="number" name="anio_max" placeholder="Año máximo">
+            <button type="submit">Buscar</button>
+            <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('cars') }}'">Limpiar</button>
+        </form>
+    </div>
+    <table>
+        <thead>
             <tr>
-                <td>{{ car.patente }}</td>
-                <td>{{ car.marca }}</td>
-                <td>{{ car.modelo }}</td>
-                <td>{{ car.tipo }}</td>
-                <td>{{ car.anio }}</td>
-                <td>{{ car.kilometraje }}</td>
-                <td>US${{ car.precio_compra }}</td>
-                <td>US${{ car.precio_venta }}</td>
-                <td>{{ car.estado }}</td>
-                <td>
-                    <a class="button button-update" href="{{ url_for('update_car', car_id=car.id_vehiculo) }}">Actualizar</a>
-                    <a class="button button-delete" href="{{ url_for('delete_car', car_id=car.id_vehiculo) }}">Eliminar</a>
-                </td>
+                <th>Patente</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Tipo</th>
+                <th>Año</th>
+                <th>Kilometraje</th>
+                <th>Precio de Compra</th>
+                <th>Precio de Venta</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.patente }}</td>
+                    <td>{{ car.marca }}</td>
+                    <td>{{ car.modelo }}</td>
+                    <td>{{ car.tipo }}</td>
+                    <td>{{ car.anio }}</td>
+                    <td>{{ car.kilometraje }}</td>
+                    <td>US${{ car.precio_compra }}</td>
+                    <td>US${{ car.precio_venta }}</td>
+                    <td>{{ car.estado }}</td>
+                    <td>
+                        <a class="button button-update" href="{{ url_for('update_car', car_id=car.id_vehiculo) }}">Actualizar</a>
+                        <a class="button button-delete" href="{{ url_for('delete_car', car_id=car.id_vehiculo) }}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if not cars %}
+        <p>No se encontraron vehículos.</p>
+    {% endif %}
+</div>
 {% endblock %}

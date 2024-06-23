@@ -7,12 +7,23 @@
 {% endblock %}
 
 {% block content %}
-<div class="main-content">
+<div class="container">
     <h1>Eliminar Vehículo</h1>
-    <p>¿Estás seguro de que deseas eliminar el vehículo {{car.marca}} ( {{car.modelo}} ) con la patente {{ car.patente }}?</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <p>¿Estás seguro de que deseas eliminar el vehículo <strong>{{ car.marca }} {{ car.modelo }}</strong> con la patente <strong>{{ car.patente }}</strong>?</p>
     <form action="{{ url_for('delete_car', car_id=car.id_vehiculo) }}" method="post">
-        <a href="{{ url_for('cars') }}">Cancelar</a>
-        <input type="submit" value="Eliminar">
+        <div class="button-container">
+            <a class="cancel-button" href="{{ url_for('cars') }}">Cancelar</a>
+            <button type="submit" class="delete-button">Eliminar</button>
+        </div>
     </form>
 </div>
 {% endblock %}

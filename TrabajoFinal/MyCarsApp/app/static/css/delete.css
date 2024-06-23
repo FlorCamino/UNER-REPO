@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
 header {
     background-color: #333;
     color: white;
@@ -12,20 +13,41 @@ header {
     display: flex;
     align-items: center;
 }
+
 header img {
     margin-right: 5px;
     height: 50px;
     width: auto;
 }
+
 header h2 {
     margin: 0;
 }
-footer {
-    background-color: #333;
+
+header .home-link {
     color: white;
-    padding: 10px 0;
-    text-align: center;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
 }
+
+header {
+    color: white;
+    margin-left: auto;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
 main {
     flex: 1;
     display: flex;
@@ -33,33 +55,37 @@ main {
     align-items: center;
     padding: 20px;
 }
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
 footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
 }
+
 footer ul {
     list-style: none;
     padding: 0;
     text-align: center;
 }
+
 h1 {
     margin-bottom: 20px;
 }
+
 p {
     font-size: 18px;
     margin-bottom: 20px;
 }
+
 form {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
 }
-input[type="submit"] {
+
+button.delete-button {
     background-color: #f44336;
     color: white;
     padding: 10px 20px;
@@ -68,10 +94,12 @@ input[type="submit"] {
     cursor: pointer;
     font-size: 16px;
 }
-input[type="submit"]:hover {
+
+button.delete-button:hover {
     background-color: #e53935;
 }
-a {
+
+a.cancel-button {
     text-decoration: none;
     color: #333;
     background-color: #f4f4f4;
@@ -79,18 +107,19 @@ a {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    display: flex;
-    align-items: center;
 }
-a:hover {
+
+a.cancel-button:hover {
     background-color: #e0e0e0;
 }
-.button-group {
+
+.button-container {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
 }
-.main-content {
+
+.container {
     background: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
@@ -99,25 +128,24 @@ a:hover {
     width: 100%;
     text-align: center;
 }
-header .home-link {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
-    font-size: 16px; 
-    font-weight: bold;
-    cursor: pointer;
-    padding: 5px 10px; 
-    border-radius: 4px; 
-    transition: background-color 0.3s, color 0.3s; 
+
+.flash-success {
+    color: green;
+    padding: 10px;
+    border: 1px solid green;
+    margin-bottom: 10px;
+    border-radius: 4px;
 }
- header .logout-link {
-    color: white;
-    margin-left: 800px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 5px 10px; 
-    border-radius: 4px; 
-    transition: background-color 0.3s, color 0.3s;
+
+.flash-danger {
+    color: red;
+    padding: 10px;
+    border: 1px solid red;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.flashes {
+    list-style: none;
+    padding: 0;
 }

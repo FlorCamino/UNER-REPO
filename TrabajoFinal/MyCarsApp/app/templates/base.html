@@ -8,9 +8,6 @@
         function goToHome() {
             window.location.href = "{{ url_for('home') }}";
         }
-        function logout() {
-            window.location.href = "{{ url_for('logout') }}";
-        }
     </script>
     {% block head %}{% endblock %}
 </head>
@@ -19,7 +16,6 @@
         <img src="{{ url_for('static', filename='images/car_image.png') }}" alt="AppCar Logo">
         <h2>AppCar 
             <span class="home-link" onclick="goToHome()">Inicio</span>
-            <span class="logout-link" onclick="logout()">Cerrar sesión</span></h2>
     </header>
     <main>
         {% block content %}{% endblock %}

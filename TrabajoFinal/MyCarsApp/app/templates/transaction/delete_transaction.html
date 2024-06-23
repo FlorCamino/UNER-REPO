@@ -7,13 +7,23 @@
 {% endblock %}
 
 {% block content %}
-<div class="main-content">
+<div class="container">
     <h1>Eliminar Transacción</h1>
-    <p>¿Estás seguro de que deseas eliminar la transacción de tipo {{ transaction.tipo_transaccion }} realizada el {{ transaction.fecha }} con un monto de US${{ transaction.monto }}?</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <p>¿Estás seguro de que deseas eliminar la transacción de tipo <strong>{{ transaction.tipo_transaccion }}</strong> realizada el <strong>{{ transaction.fecha }}</strong> con un monto de <strong>US${{ transaction.monto }}</strong>?</p>
     <form action="{{ url_for('delete_transaction', transaction_id=transaction.id_transaccion) }}" method="post">
-        <a href="{{ url_for('transactions') }}">Cancelar</a>
-        <input type="submit" value="Eliminar">
+        <div class="button-container">
+            <a class="cancel-button" href="{{ url_for('transactions') }}">Cancelar</a>
+            <button type="submit" class="delete-button">Eliminar</button>
+        </div>
     </form>
 </div>
 {% endblock %}
-

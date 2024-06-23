@@ -12,46 +12,64 @@
         <h1>Transacciones</h1>
         <a class="add-button" href="{{ url_for('store_transaction') }}">Agregar una nueva transacción</a>
     </div>
-</div>
-<div class="search-container">
-    <form action="{{ url_for('transactions') }}" method="get">
-        <input type="text" name="tipo_transacion" placeholder="Buscar por tipo de transacción">
-        <input type="number" name="fecha_min" placeholder="Buscar fecha desde">
-        <input type="number" name="fecha_max" placeholder="Buscar fecha desde">
-        <input type="number" name="monto_min" placeholder="Monto mínimo">
-        <input type="number" name="monto_max" placeholder="Monto máximo">
-        <button type="submit">Buscar</button>
-        <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('transactions') }}'">Limpiar</button>
-    </form>
-</div>
-<table>
-    <thead>
-        <tr>
-            <th>ID Vehículo</th>
-            <th>ID Cliente</th>
-            <th>Tipo de Transacción</th>
-            <th>Fecha</th>
-            <th>Monto</th>
-            <th>Observaciones</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for transaction in transactions %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class="search-container">
+        <form action="{{ url_for('transactions') }}" method="get">
+            <input type="text" name="cliente_nombre" placeholder="Buscar por nombre de cliente">
+            <input type="text" name="vehiculo_marca_modelo" placeholder="Buscar por marca y modelo de vehículo">
+            <input type="text" name="fecha_min" placeholder="Buscar fecha desde (dd-mm-yyyy)">
+            <input type="text" name="fecha_max" placeholder="Buscar fecha hasta (dd-mm-yyyy)">
+            <input type="number" name="monto_min" placeholder="Monto mínimo">
+            <input type="number" name="monto_max" placeholder="Monto máximo">
+            <button type="submit">Buscar</button>
+            <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('transactions') }}'">Limpiar</button>
+        </form>
+    </div>
+    <table>
+        <thead>
             <tr>
-                <td>{{ transaction.id_vehiculo }}</td>
-                <td>{{ transaction.id_cliente }}</td>
-                <td>{{ transaction.tipo_transaccion }}</td>
-                <td>{{ transaction.fecha }}</td>
-                <td>US${{ transaction.monto }}</td>
-                <td>{{ transaction.observaciones }}</td>
-                <td class="actions">
-                    <a class="button button-update" href="{{ url_for('update_transaction', transaction_id=transaction.id_transaccion) }}">Actualizar</a>
-                    <a class="button button-delete" href="{{ url_for('delete_transaction', transaction_id=transaction.id_transaccion) }}">Eliminar</a>
-                </td>
+                <th>Vehículo</th>
+                <th>Cliente</th>
+                <th>Tipo de Transacción</th>
+                <th>Fecha</th>
+                <th>Monto</th>
+                <th>Observaciones</th>
+                <th>Acciones</th>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.vehiculo.marca if transaction.vehiculo else 'Desconocido' }} {{ transaction.vehiculo.modelo if transaction.vehiculo else '' }}</td>
+                    <td>{{ transaction.cliente.nombre if transaction.cliente else 'Desconocido' }} {{ transaction.cliente.apellido if transaction.cliente else '' }}</td>
+                    <td>{{ transaction.tipo_transaccion }}</td>
+                    <td>{{ transaction.fecha_formateada }}</td>
+                    <td>US${{ transaction.monto }}</td>
+                    <td>{{ transaction.observaciones }}</td>
+                    <td class="actions">
+                        {% if transaction.id_transaccion %}
+                            <a class="button button-update" href="{{ url_for('update_transaction', transaction_id=transaction.id_transaccion) }}">Actualizar</a>
+                            <a class="button button-delete" href="{{ url_for('delete_transaction', transaction_id=transaction.id_transaccion) }}">Eliminar</a>
+                        {% else %}
+                            ID de transacción no disponible
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            {% if not transactions %}
+                <tr>
+                    <td colspan="7">No se encontraron transacciones.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
-

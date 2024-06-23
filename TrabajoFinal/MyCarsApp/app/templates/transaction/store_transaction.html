@@ -7,26 +7,58 @@
 {% endblock %}
 
 {% block content %}
-<h1>Agregar Transacción</h1>
-        <form action="{{ url_for('store_transaction') }}" method="post">
-            <label for="id_vehiculo">ID Vehículo:</label><br>
-            <input type="number" id="id_vehiculo" name="id_vehiculo"><br>
-            <label for="id_cliente">ID Cliente:</label><br>
-            <input type="number" id="id_cliente" name="id_cliente"><br>
-            <label for="tipo_transaccion">Tipo de Transacción:</label><br>
-            <input type="text" id="tipo_transaccion" name="tipo_transaccion"><br>
-            <label for="fecha">Fecha:</label><br>
-            <input type="date" id="fecha" name="fecha"><br>
-            <label for="monto">Monto:</label><br>
-            <input type="number" id="monto" name="monto" step="0.01"><br>
-            <label for="observaciones">Observaciones:</label><br>
-            <input type="text" id="observaciones" name="observaciones"><br><br>
-            <div class="button-container">
-                <a class="back-button" href="{{ url_for('transactions') }}">Volver</a>
-                <button type="submit" class="store-button">Guardar</button>
-            </div>
-        </form>
+<div class="container">
+    <h1 class="header-container">Crear Transacción</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('store_transaction') }}" method="post">
+        <div class="form-group">
+            <label for="vehiculo">Vehículo:</label>
+            <select id="vehiculo" name="id_vehiculo" required>
+                {% for vehiculo in vehiculos %}
+                    <option value="{{ vehiculo.id_vehiculo }}">
+                        {{ vehiculo.marca }} {{ vehiculo.modelo }} (Patente: {{ vehiculo.patente }})
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cliente">Cliente:</label>
+            <select id="cliente" name="id_cliente" required>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id_cliente }}">
+                        {{ cliente.nombre }} {{ cliente.apellido }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="tipo_transaccion">Tipo de Transacción:</label>
+            <input type="text" id="tipo_transaccion" name="tipo_transaccion" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+        </div>
+        <div class="form-group">
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" name="monto" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" name="observaciones"></textarea>
+        </div>
+        <div class="button-container">
+            <a class="back-button" href="{{ url_for('transactions') }}">Volver</a>
+            <button type="submit" class="store-button">Guardar</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
-
-
-

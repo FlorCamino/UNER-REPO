@@ -7,25 +7,46 @@
 {% endblock %}
 
 {% block content %}
-<h1>Agregar Cliente</h1>
-        <form action="{{ url_for('store_customer') }}" method="post">
-            <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre"><br>
-            <label for="apellido">Apellido:</label><br>
-            <input type="text" id="apellido" name="apellido"><br>
-            <label for="documento">Documento:</label><br>
-            <input type="text" id="documento" name="documento"><br>
-            <label for="direccion">Dirección:</label><br>
-            <input type="text" id="direccion" name="direccion"><br>
-            <label for="telefono">Teléfono:</label><br>
-            <input type="text" id="telefono" name="telefono"><br>
-            <label for="correo_electronico">Correo Electrónico:</label><br>
-            <input type="email" id="correo_electronico" name="correo_electronico"><br><br>
-            <div class="button-container">
-                <a class="back-button" href="{{ url_for('customers') }}">Volver</a>
-                <button type="submit" class="store-button">Guardar</button>
-            </div>
-        </form>
+<div class="container">
+    <h1>Agregar Cliente</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('store_customer') }}" method="post">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="documento">Documento:</label>
+            <input type="text" id="documento" name="documento" required>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+        </div>
+        <div class="form-group">
+            <label for="correo_electronico">Correo Electrónico:</label>
+            <input type="email" id="correo_electronico" name="correo_electronico" required>
+        </div>
+        <div class="button-container">
+            <a class="back-button" href="{{ url_for('customers') }}">Volver</a>
+            <button type="submit" class="store-button">Guardar</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
-
-

@@ -7,28 +7,58 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="header-container">Actualizar Cliente</h1>
-        <form action="{{ url_for('update_customer', customer_id=customer.id_cliente) }}" method="post">
-            <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre" value="{{ customer.nombre }}"><br>
-            <label for="apellido">Apellido:</label><br>
-            <input type="text" id="apellido" name="apellido" value="{{ customer.apellido }}"><br>
-            <label for="documento">Documento:</label><br>
-            <input type="text" id="documento" name="documento" value="{{ customer.documento }}"><br>
-            <label for="direccion">Dirección:</label><br>
-            <input type="text" id="direccion" name="direccion" value="{{ customer.direccion }}"><br>
-            <label for="telefono">Teléfono:</label><br>
-            <input type="text" id="telefono" name="telefono" value="{{ customer.telefono }}"><br>
-            <label for="correo_electronico">Correo Electrónico:</label><br>
-            <input type="email" id="correo_electronico" name="correo_electronico" value="{{ customer.correo_electronico }}"><br><br>
-            <div class="button-container">
-                <a class="back-button" href="{{ url_for('transactions') }}">Volver</a>
-                <button type="submit" class="update-button">Actualizar</button>
-            </div>
-        </form>
+<div class="container">
+    <h1 class="header-container">Actualizar Transacción</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="{{ url_for('update_transaction', transaction_id=transaction.id_transaccion) }}" method="post">
+        <div class="form-group">
+            <label for="vehiculo">Vehículo:</label>
+            <select id="vehiculo" name="id_vehiculo" required>
+                {% for vehiculo in vehiculos %}
+                    <option value="{{ vehiculo.id_vehiculo }}" {% if vehiculo.id_vehiculo == transaction.id_vehiculo %}selected{% endif %}>
+                        {{ vehiculo.marca }} {{ vehiculo.modelo }} (Patente: {{ vehiculo.patente }})
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cliente">Cliente:</label>
+            <select id="cliente" name="id_cliente" required>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id_cliente }}" {% if cliente.id_cliente == transaction.id_cliente %}selected{% endif %}>
+                        {{ cliente.nombre }} {{ cliente.apellido }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="tipo_transaccion">Tipo de Transacción:</label>
+            <input type="text" id="tipo_transaccion" name="tipo_transaccion" value="{{ transaction.tipo_transaccion }}" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" value="{{ transaction.fecha }}" required>
+        </div>
+        <div class="form-group">
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" name="monto" step="0.01" value="{{ transaction.monto }}" required>
+        </div>
+        <div class="form-group">
+            <label for="observaciones">Observaciones:</label>
+            <input type="text" id="observaciones" name="observaciones" value="{{ transaction.observaciones }}">
+        </div>
+        <div class="button-container">
+            <a class="back-button" href="{{ url_for('transactions') }}">Volver</a>
+            <button type="submit" class="update-button">Actualizar</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
-
-
-
-
-

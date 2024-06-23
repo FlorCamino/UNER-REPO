@@ -1,24 +1,121 @@
 {
-  "transactions": [
-      {
-        "id_transaccion": 1,
-        "id_vehiculo": 1,
-        "id_cliente": 1,
-        "tipo_transaccion": "Venta",
-        "fecha": "2024-01-15",
-        "monto": 15000,
-        "observaciones": "Venta realizada con éxito."
-      },
-      {
-        "id_transaccion": 2,
-        "id_vehiculo": 2,
-        "id_cliente": 2,
-        "tipo_transaccion": "Compra",
-        "fecha": "2024-01-20",
-        "monto": 14000,
-        "observaciones": "Compra registrada."
-      }
+    "transactions": [
+        {
+            "id_transaccion": 1,
+            "id_vehiculo": 1,
+            "id_cliente": 1,
+            "tipo_transaccion": "Venta",
+            "fecha": "2024-01-15",
+            "monto": 15000,
+            "observaciones": "Venta realizada con \u00e9xito.",
+            "vehiculo": {
+                "patente": "ABC721",
+                "marca": "Chevrolet",
+                "modelo": "S10",
+                "tipo": "Pickup",
+                "anio": 2019,
+                "kilometraje": 90000,
+                "precio_compra": 50000,
+                "precio_venta": 75000,
+                "estado": "Reservado",
+                "id_vehiculo": 1
+            },
+            "cliente": {
+                "id_cliente": 1,
+                "nombre": "Juan",
+                "apellido": "P\u00e9rez",
+                "documento": "12345678",
+                "direccion": "Calle Falsa 123",
+                "telefono": "123-4566",
+                "correo_electronico": "juan.perez@example.com"
+            },
+            "fecha_formateada": "15-01-2024"
+        },
+        {
+            "id_transaccion": 2,
+            "id_vehiculo": 5,
+            "id_cliente": 2,
+            "tipo_transaccion": "Compra",
+            "fecha": "2024-01-20",
+            "monto": 14000.0,
+            "observaciones": "Compra registrada.",
+            "vehiculo": {
+                "marca": "Desconocido",
+                "modelo": ""
+            },
+            "cliente": {
+                "id_cliente": 2,
+                "nombre": "Mar\u00eda",
+                "apellido": "G\u00f3mez",
+                "documento": "87654321",
+                "direccion": "Avenida Siempreviva 742",
+                "telefono": "987-6543",
+                "correo_electronico": "maria.gomez@example.com"
+            },
+            "fecha_formateada": "20-01-2024"
+        },
+        {
+            "id_transaccion": 3,
+            "id_vehiculo": 6,
+            "id_cliente": 3,
+            "tipo_transaccion": "Compra",
+            "fecha": "2024-06-21",
+            "monto": 40000.0,
+            "observaciones": "No es un campo obligatorio",
+            "vehiculo": {
+                "patente": "IVE733",
+                "marca": "Peugeot",
+                "modelo": "207",
+                "tipo": "Sed\u00e1n",
+                "anio": 2019,
+                "kilometraje": 60000,
+                "precio_compra": 12000,
+                "precio_venta": 15000,
+                "estado": "Disponible",
+                "id_vehiculo": 6
+            },
+            "cliente": {
+                "nombre": "Florencia",
+                "apellido": "Camino",
+                "documento": "23928329",
+                "direccion": "peru 418",
+                "telefono": "744-482",
+                "correo_electronico": "flopiis.uner@gmail.com",
+                "id_cliente": 3
+            },
+            "fecha_formateada": "21-06-2024"
+        },
+        {
+            "id_vehiculo": 7,
+            "id_cliente": 1,
+            "tipo_transaccion": "Compra",
+            "fecha": "2024-06-13",
+            "monto": 39000.0,
+            "observaciones": "Este es un ejemplo",
+            "id_transaccion": 6,
+            "vehiculo": {
+                "patente": "XAP156",
+                "marca": "VOLKSWAGEN",
+                "modelo": "TAOS",
+                "tipo": "SED\u00c1N",
+                "anio": 2022,
+                "kilometraje": 82000,
+                "precio_compra": 38000,
+                "precio_venta": 37100,
+                "estado": "Disponible",
+                "id_vehiculo": 7
+            },
+            "cliente": {
+                "id_cliente": 1,
+                "nombre": "Juan",
+                "apellido": "P\u00e9rez",
+                "documento": "12345678",
+                "direccion": "Calle Falsa 123",
+                "telefono": "123-4566",
+                "correo_electronico": "juan.perez@example.com"
+            },
+            "fecha_formateada": "13-06-2024"
+        }
     ],
-    "last_id": 2
+    "last_id": 6
 }
-  

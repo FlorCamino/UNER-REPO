@@ -47,7 +47,31 @@
             "precio_venta": 15000,
             "estado": "Disponible",
             "id_vehiculo": 6
+        },
+        {
+            "patente": "XAP156",
+            "marca": "VOLKSWAGEN",
+            "modelo": "TAOS",
+            "tipo": "SED\u00c1N",
+            "anio": 2022,
+            "kilometraje": 82000,
+            "precio_compra": 38000,
+            "precio_venta": 37100,
+            "estado": "Disponible",
+            "id_vehiculo": 7
+        },
+        {
+            "patente": "SWC864",
+            "marca": "Ford",
+            "modelo": "Ka",
+            "tipo": "Hatchback",
+            "anio": 2017,
+            "kilometraje": 132665,
+            "precio_compra": 6000,
+            "precio_venta": 5500,
+            "estado": "Disponible",
+            "id_vehiculo": 8
         }
     ],
-    "last_id": 6
+    "last_id": 8
 }

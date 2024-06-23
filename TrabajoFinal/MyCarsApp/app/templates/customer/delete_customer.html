@@ -7,12 +7,23 @@
 {% endblock %}
 
 {% block content %}
-<div class="main-content">
+<div class="container">
     <h1>Eliminar Cliente</h1>
-    <p>¿Estás seguro de que deseas eliminar al cliente {{ customer.nombre }} {{ customer.apellido }} con el documento {{ customer.documento }}?</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <p>¿Estás seguro de que deseas eliminar al cliente <strong>{{ customer.nombre }} {{ customer.apellido }}</strong> con el documento <strong>{{ customer.documento }}</strong>?</p>
     <form action="{{ url_for('delete_customer', customer_id=customer.id_cliente) }}" method="post">
-        <a href="{{ url_for('customers') }}">Cancelar</a>
-        <input type="submit" value="Eliminar">
+        <div class="button-container">
+            <a class="cancel-button" href="{{ url_for('customers') }}">Cancelar</a>
+            <button type="submit" class="delete-button">Eliminar</button>
+        </div>
     </form>
 </div>
 {% endblock %}
