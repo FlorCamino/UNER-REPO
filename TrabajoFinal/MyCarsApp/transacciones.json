@@ -37,7 +37,7 @@
             "id_cliente": 2,
             "tipo_transaccion": "Compra",
             "fecha": "2024-01-20",
-            "monto": 14000,
+            "monto": 14000.0,
             "observaciones": "Compra registrada.",
             "vehiculo": {
                 "patente": "TDX865",
@@ -68,7 +68,7 @@
             "id_cliente": 3,
             "tipo_transaccion": "Compra",
             "fecha": "2024-06-21",
-            "monto": 40000,
+            "monto": 40000.0,
             "observaciones": "No es un campo obligatorio",
             "vehiculo": {
                 "patente": "IVE733",
@@ -98,7 +98,7 @@
             "id_cliente": 1,
             "tipo_transaccion": "Compra",
             "fecha": "2024-06-13",
-            "monto": 39000,
+            "monto": 39000.0,
             "observaciones": "Esta es una prueba",
             "id_transaccion": 6,
             "vehiculo": {
@@ -125,5 +125,5 @@
             "fecha_formateada": "13-06-2024"
         }
     ],
-    "last_id": 7
+    "last_id": 8
 }

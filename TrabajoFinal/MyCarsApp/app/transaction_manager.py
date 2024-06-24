@@ -28,7 +28,6 @@ class TransactionManager:
         return self.data['last_id']
 
     def store_transaction(self, params):
-        # Verifica si la transacción ya existe
         existing_transaction = next((t for t in self.data['transactions'] if t.get('id_transaccion') == params.get('id_transaccion')), None)
         if existing_transaction:
             print(f"Transaction with ID {params.get('id_transaccion')} already exists.")

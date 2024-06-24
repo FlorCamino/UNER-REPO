@@ -1,6 +1,5 @@
 import json
 import os
-
 class CarManager:
     def __init__(self, filename='vehiculos.json'):
         self.filename = filename
@@ -14,15 +13,14 @@ class CarManager:
             else:
                 self.data = {"cars": [], "last_id": 0}
         except (FileNotFoundError, json.JSONDecodeError) as e:
-            print(f"Error loading data from {self.filename}: {e}")
-            self.data = {"cars": [], "last_id": 0}
+            raise Exception(f"Error loading data from {self.filename}: {e}")
 
     def save_data(self):
         try:
             with open(self.filename, 'w', encoding='utf-8') as file:
                 json.dump(self.data, file, indent=4)
         except (IOError, OSError) as e:
-            print(f"Error saving data to {self.filename}: {e}")
+            raise Exception(f"Error saving data to {self.filename}: {e}")
 
     def get_next_id(self):
         self.data['last_id'] += 1
@@ -37,8 +35,7 @@ class CarManager:
             self.save_data()
             return car_id
         except Exception as e:
-            print(f"Error storing car: {e}")
-            return None
+            raise Exception(f"Error storing car: {e}")
 
     def update_car(self, car_id, updated_params):
         try:
@@ -49,8 +46,7 @@ class CarManager:
                     return True
             return False
         except Exception as e:
-            print(f"Error updating car with ID {car_id}: {e}")
-            return False
+            raise Exception(f"Error updating car with ID {car_id}: {e}")
 
     def delete_car(self, car_id):
         try:
@@ -61,5 +57,5 @@ class CarManager:
                     return True
             return False
         except Exception as e:
-            print(f"Error deleting car with ID {car_id}: {e}")
-            return False
+            raise Exception(f"Error deleting car with ID {car_id}: {e}")
+

@@ -9,7 +9,7 @@
             "kilometraje": 90000,
             "precio_compra": 50000,
             "precio_venta": 75000,
-            "estado": "Reservado",
+            "estado": "Disponible",
             "id_vehiculo": 1
         },
         {
@@ -59,19 +59,7 @@
             "precio_venta": 37100,
             "estado": "Disponible",
             "id_vehiculo": 7
-        },
-        {
-            "patente": "SWC864",
-            "marca": "Ford",
-            "modelo": "Ka",
-            "tipo": "Hatchback",
-            "anio": 2017,
-            "kilometraje": 132665,
-            "precio_compra": 6000,
-            "precio_venta": 5500,
-            "estado": "Disponible",
-            "id_vehiculo": 8
         }
     ],
-    "last_id": 9
+    "last_id": 11
 }
