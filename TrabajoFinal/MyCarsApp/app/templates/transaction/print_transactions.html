@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if tipo == 'venta' %}
+        Transacciones de Venta
+    {% elif tipo == 'compra' %}
+        Transacciones de Compra
+    {% endif %}
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header-container">
+        <h1>{% if tipo == 'venta' %} Transacciones de Venta {% elif tipo == 'compra' %} Transacciones de Compra {% endif %}</h1>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Vehículo</th>
+                <th>Cliente</th>
+                <th>Tipo de Transacción</th>
+                <th>Fecha</th>
+                <th>Monto</th>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.vehiculo.marca if transaction.vehiculo else 'Desconocido' }} {{ transaction.vehiculo.modelo if transaction.vehiculo else '' }}</td>
+                    <td>{{ transaction.cliente.nombre if transaction.cliente else 'Desconocido' }} {{ transaction.cliente.apellido if transaction.cliente else '' }}</td>
+                    <td>{{ transaction.tipo_transaccion }}</td>
+                    <td>{{ transaction.fecha_formateada }}</td>
+                    <td>US${{ transaction.monto }}</td>
+                    <td>{{ transaction.observaciones }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="button-container">
+        <a class="back-button" href="{{ url_for('transactions') }}">Volver</a>
+        <button class="print-button">Imprimir</button>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const printButton = document.querySelector('.print-button');
+    printButton.addEventListener('click', function() {
+        window.print();
+    });
+});
+</script>
+
+{% endblock %}

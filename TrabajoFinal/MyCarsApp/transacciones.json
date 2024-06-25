@@ -17,7 +17,7 @@
                 "kilometraje": 90000,
                 "precio_compra": 50000,
                 "precio_venta": 75000,
-                "estado": "Reservado",
+                "estado": "Disponible",
                 "id_vehiculo": 1
             },
             "cliente": {
@@ -35,7 +35,7 @@
             "id_transaccion": 2,
             "id_vehiculo": 5,
             "id_cliente": 2,
-            "tipo_transaccion": "Compra",
+            "tipo_transaccion": "Venta",
             "fecha": "2024-01-20",
             "monto": 14000.0,
             "observaciones": "Compra registrada.",

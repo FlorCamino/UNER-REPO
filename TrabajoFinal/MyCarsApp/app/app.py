@@ -295,6 +295,28 @@ def delete_transaction(transaction_id):
         if transaction is None:
             return "Transacción no encontrada", 404
         return render_template('transaction/delete_transaction.html', transaction=transaction)
+    
+@app.route('/print_transactions/<tipo>', methods=['GET'])
+def print_transactions(tipo):
+    filtered_transactions = []
+
+    if tipo == 'venta':
+        filtered_transactions = [t for t in transaction_manager.data['transactions'] if t['tipo_transaccion'].lower() == 'venta']
+    elif tipo == 'compra':
+        filtered_transactions = [t for t in transaction_manager.data['transactions'] if t['tipo_transaccion'].lower() == 'compra']
+
+    cars = car_manager.data['cars']
+    customers = customer_manager.data['customers']
+
+    for transaction in filtered_transactions:
+        vehicle = next((car for car in cars if car['id_vehiculo'] == transaction['id_vehiculo']), None)
+        customer = next((cust for cust in customers if cust['id_cliente'] == transaction['id_cliente']), None)
+        transaction['vehiculo'] = vehicle if vehicle else {"marca": "Desconocido", "modelo": ""}
+        transaction['cliente'] = customer if customer else {"nombre": "Desconocido", "apellido": ""}
+        transaction['fecha_formateada'] = datetime.strptime(transaction['fecha'], '%Y-%m-%d').strftime('%d-%m-%Y')
+
+    return render_template('transaction/print_transactions.html', transactions=filtered_transactions, tipo=tipo)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
