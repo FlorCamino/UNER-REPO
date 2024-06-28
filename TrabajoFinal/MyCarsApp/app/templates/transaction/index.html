@@ -4,6 +4,40 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('search-form');
+        const transactionTable = document.getElementById('transaction-table');
+        const totalContainer = document.getElementById('total-container');
+        const tableHeader = document.getElementById('table-header');
+        
+        form.addEventListener('submit', function(event) {
+            const tipoTransaccion = document.querySelector('select[name="tipo_transaccion"]').value;
+            const clienteNombre = document.querySelector('select[name="cliente_nombre"]').value;
+            const vehiculoMarcaModelo = document.querySelector('select[name="vehiculo_marca_modelo"]').value;
+            const fechaMin = document.querySelector('input[name="fecha_min"]').value;
+            const fechaMax = document.querySelector('input[name="fecha_max"]').value;
+            const montoMin = document.querySelector('input[name="monto_min"]').value;
+            const montoMax = document.querySelector('input[name="monto_max"]').value;
+
+            if (!tipoTransaccion && !clienteNombre && !vehiculoMarcaModelo && !fechaMin && !fechaMax && !montoMin && !montoMax) {
+                event.preventDefault();
+                alert('Por favor seleccione al menos un filtro.');
+            }
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('tipo_transaccion') || urlParams.has('cliente_nombre') || urlParams.has('vehiculo_marca_modelo') || urlParams.has('fecha_min') || urlParams.has('fecha_max') || urlParams.has('monto_min') || urlParams.has('monto_max')) {
+            transactionTable.classList.remove('hidden');
+            totalContainer.classList.remove('hidden');
+            tableHeader.classList.remove('hidden');
+        } else {
+            transactionTable.classList.add('hidden');
+            totalContainer.classList.add('hidden');
+            tableHeader.classList.add('hidden');
+        }
+    });
+</script>
 {% endblock %}
 
 {% block content %}
@@ -12,8 +46,6 @@
         <h1>Transacciones</h1>
         <div class="button-group">
             <a class="add-button" href="{{ url_for('store_transaction') }}">Agregar nueva</a>
-            <a class="add-button" href="{{ url_for('print_transactions', tipo='venta') }}">Imprimir transacciones de Venta</a>
-            <a class="add-button" href="{{ url_for('print_transactions', tipo='compra') }}">Imprimir transacciones de Compra</a>
         </div>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -26,54 +58,75 @@
         {% endif %}
     {% endwith %}
     <div class="search-container">
-        <form action="{{ url_for('transactions') }}" method="get">
-            <input type="text" name="cliente_nombre" placeholder="Buscar por nombre de cliente">
-            <input type="text" name="vehiculo_marca_modelo" placeholder="Buscar por marca y modelo de vehículo">
+        <form id="search-form" action="{{ url_for('transactions') }}" method="get">
+            <select name="cliente_nombre">
+                <option value="">Todos los clientes</option>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente | lower }}">{{ cliente }}</option>
+                {% endfor %}
+            </select>
+            <select name="vehiculo_marca_modelo">
+                <option value="">Todos los vehículos</option>
+                {% for vehiculo in vehiculos %}
+                    <option value="{{ vehiculo | lower }}">{{ vehiculo }}</option>
+                {% endfor %}
+            </select>
             <input type="text" name="fecha_min" placeholder="Buscar fecha desde (dd-mm-yyyy)">
             <input type="text" name="fecha_max" placeholder="Buscar fecha hasta (dd-mm-yyyy)">
             <input type="number" name="monto_min" placeholder="Monto mínimo">
             <input type="number" name="monto_max" placeholder="Monto máximo">
+            <select name="tipo_transaccion">
+                <option value="">Todos</option>
+                <option value="compra">Compra</option>
+                <option value="venta">Venta</option>
+            </select>
             <button type="submit">Buscar</button>
             <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('transactions') }}'">Limpiar</button>
         </form>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Vehículo</th>
-                <th>Cliente</th>
-                <th>Tipo de Transacción</th>
-                <th>Fecha</th>
-                <th>Monto</th>
-                <th>Observaciones</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for transaction in transactions %}
+    <div id="transaction-table" class="hidden">
+        <table>
+            <thead id="table-header" class="hidden">
                 <tr>
-                    <td>{{ transaction.vehiculo.marca if transaction.vehiculo else 'Desconocido' }} {{ transaction.vehiculo.modelo if transaction.vehiculo else '' }}</td>
-                    <td>{{ transaction.cliente.nombre if transaction.cliente else 'Desconocido' }} {{ transaction.cliente.apellido if transaction.cliente else '' }}</td>
-                    <td>{{ transaction.tipo_transaccion }}</td>
-                    <td>{{ transaction.fecha_formateada }}</td>
-                    <td>US${{ transaction.monto }}</td>
-                    <td>{{ transaction.observaciones }}</td>
-                    <td class="actions">
-                        {% if transaction.id_transaccion %}
-                            <a class="button button-update" href="{{ url_for('update_transaction', transaction_id=transaction.id_transaccion) }}">Actualizar</a>
-                            <a class="button button-delete" href="{{ url_for('delete_transaction', transaction_id=transaction.id_transaccion) }}">Eliminar</a>
-                        {% else %}
-                            ID de transacción no disponible
-                        {% endif %}
-                    </td>
+                    <th>Vehículo</th>
+                    <th>Cliente</th>
+                    <th>Tipo de Transacción</th>
+                    <th>Fecha</th>
+                    <th>Monto</th>
+                    <th>Observaciones</th>
+                    <th>Acciones</th>
                 </tr>
-            {% endfor %}
-            {% if not transactions %}
-                <tr>
-                    <td colspan="7">No se encontraron transacciones.</td>
-                </tr>
-            {% endif %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction.vehiculo.marca if transaction.vehiculo else 'Desconocido' }} {{ transaction.vehiculo.modelo if transaction.vehiculo else '' }}</td>
+                        <td>{{ transaction.cliente.nombre if transaction.cliente else 'Desconocido' }} {{ transaction.cliente.apellido if transaction.cliente else '' }}</td>
+                        <td>{{ transaction.tipo_transaccion }}</td>
+                        <td>{{ transaction.fecha_formateada }}</td>
+                        <td>US${{ transaction.monto }}</td>
+                        <td>{{ transaction.observaciones }}</td>
+                        <td class="actions">
+                            {% if transaction.id_transaccion %}
+                                <a class="button button-update" href="{{ url_for('update_transaction', transaction_id=transaction.id_transaccion) }}">Actualizar</a>
+                                <a class="button button-delete" href="{{ url_for('delete_transaction', transaction_id=transaction.id_transaccion) }}">Eliminar</a>
+                                <a class="button button-print" href="{{ url_for('print_transaction', transaction_id=transaction.id_transaccion) }}">Imprimir</a>
+                            {% else %}
+                                ID de transacción no disponible
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% if not transactions %}
+                    <tr>
+                        <td colspan="7">No se encontraron transacciones.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div id="total-container" class="total-container hidden">
+        <h2>Total Monto: US${{ total_monto }}</h2>
+    </div>
 </div>
 {% endblock %}

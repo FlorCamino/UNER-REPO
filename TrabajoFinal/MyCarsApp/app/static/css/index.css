@@ -157,7 +157,8 @@ footer ul {
     gap: 10px;
 }
 
-.search-container input {
+.search-container input,
+.search-container select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -271,4 +272,8 @@ header .home-link {
     .button-container {
         display: none;
     }
+}
+
+.hidden {
+    display: none;
 }

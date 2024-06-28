@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobante de Transacción</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/print.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='images/car_image.png') }}" alt="AppCar Logo">
+            <div>
+                <h2>AppCar</h2>
+                <p>C.U.I.T.: 736284542</p>
+                <p>Dirección: 9 de Julio 2321, CP 2393, Buenos Aires</p>
+                <p>Teléfono: 324245</p>
+            </div>
+        </div>
+        <h3>Comprobante de Transacción</h3>
+        <div class="details">
+            <table class="bordered-table">
+                <tr>
+                    <th>Tipo de Transacción:</th>
+                    <td>{{ transaction.tipo_transaccion }}</td>
+                    <th>Número:</th>
+                    <td>{{ transaction.id_transaccion }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha de Emisión:</th>
+                    <td>{{ transaction.fecha_formateada }}</td>
+                    <th>Estado:</th>
+                    <td>Procesado</td>
+                </tr>
+                <tr>
+                    <th>Resumen:</th>
+                    <td>{{ transaction.observaciones }}</td>
+                    <th>Fecha de Vencimiento:</th>
+                    <td>{{ transaction.fecha_formateada }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="client-details">
+            <h3>Detalles del Cliente</h3>
+            <table class="bordered-table">
+                <tr>
+                    <th>Nombre:</th>
+                    <td>{{ transaction.cliente.nombre }}</td>
+                    <th>Apellido:</th>
+                    <td>{{ transaction.cliente.apellido }}</td>
+                </tr>
+                <tr>
+                    <th>Documento:</th>
+                    <td>{{ transaction.cliente.documento }}</td>
+                    <th>Dirección:</th>
+                    <td>{{ transaction.cliente.direccion }}</td>
+                </tr>
+                <tr>
+                    <th>Teléfono:</th>
+                    <td>{{ transaction.cliente.telefono }}</td>
+                    <th>Correo Electrónico:</th>
+                    <td>{{ transaction.cliente.correo }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="vehicle-details">
+            <h3>Detalles del Vehículo</h3>
+            <table class="bordered-table">
+                <tr>
+                    <th>Marca:</th>
+                    <td>{{ transaction.vehiculo.marca }}</td>
+                    <th>Modelo:</th>
+                    <td>{{ transaction.vehiculo.modelo }}</td>
+                </tr>
+                <tr>
+                    <th>Tipo:</th>
+                    <td>{{ transaction.vehiculo.tipo }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="accounting-details">
+            <h3>Detalles Contables</h3>
+            <table class="bordered-table">
+                <tr>
+                    <th>Código de la Cuenta</th>
+                    <th>Nombre de la Cuenta Contable</th>
+                    <th>Total Debe</th>
+                    <th>Total Haber</th>
+                </tr>
+                <tr>
+                    <td>17892864839274</td>
+                    <td>Detalle del comprobante</td>
+                    <td>0,00</td>
+                    <td>{{ transaction.monto }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="summary">
+            <table class="bordered-table">
+                <tr>
+                    <th>Subtotal por Centro de Costo:</th>
+                    <td>{{ transaction.monto }}</td>
+                </tr>
+                <tr>
+                    <th>Diferencia:</th>
+                    <td>0,00</td>
+                </tr>
+            </table>
+        </div>
+        <div class="buttons">
+            <button onclick="window.location.href='{{ url_for('transactions') }}'">Volver</button>
+            <button onclick="window.print()">Imprimir</button>
+        </div>
+    </div>
+</body>
+</html>

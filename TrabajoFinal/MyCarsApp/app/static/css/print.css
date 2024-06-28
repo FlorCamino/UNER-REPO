@@ -1,0 +1,82 @@
+@page {
+    size: A4;
+    margin: 20mm;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container {
+    width: 100%;
+    max-width: 210mm;
+    padding: 20px;
+    border: 1px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    text-align: left;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.header img {
+    max-width: 150px;
+}
+.header div {
+    text-align: right;
+}
+.details, .accounting-details, .client-details, .vehicle-details {
+    margin: 20px 0;
+    text-align: left;
+}
+.details th, .details td, .accounting-details th, .accounting-details td, .client-details th, .client-details td, .vehicle-details th, .vehicle-details td {
+    padding: 5px;
+    text-align: left;
+}
+.details th, .accounting-details th, .client-details th, .vehicle-details th {
+    background-color: #f2f2f2;
+}
+.summary {
+    margin-top: 20px;
+}
+.summary th, .summary td {
+    padding: 5px;
+    text-align: left;
+}
+.summary th {
+    background-color: #f2f2f2;
+}
+.bordered-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.bordered-table th, .bordered-table td {
+    border: 1px solid #000;
+}
+.buttons {
+    margin-top: 20px;
+    text-align: right;
+}
+.buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+@media print {
+    .buttons {
+        display: none;
+    }
+}

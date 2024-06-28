@@ -61,7 +61,7 @@ def customers():
         filtered_customers = [customer for customer in filtered_customers if apellido in customer['apellido'].lower()]
     return render_template('customer/index.html', customers=filtered_customers)
 
-@app.route('/transactions', methods=['GET'], endpoint='transactions')
+@app.route('/transactions', methods=['GET'])
 def transactions():
     fecha_min = request.args.get('fecha_min')
     fecha_max = request.args.get('fecha_max')
@@ -69,8 +69,12 @@ def transactions():
     monto_max = request.args.get('monto_max', type=float)
     cliente_nombre = request.args.get('cliente_nombre', '').strip().lower()
     vehiculo_marca_modelo = request.args.get('vehiculo_marca_modelo', '').strip().lower()
+    tipo_transaccion = request.args.get('tipo_transaccion')
 
     filtered_transactions = transaction_manager.data['transactions']
+        
+    if tipo_transaccion:
+        filtered_transactions = [t for t in filtered_transactions if t['tipo_transaccion'].lower() == tipo_transaccion.lower()]
 
     if fecha_min:
         try:
@@ -88,7 +92,7 @@ def transactions():
         filtered_transactions = [t for t in filtered_transactions if t['monto'] >= monto_min]
     if monto_max is not None:
         filtered_transactions = [t for t in filtered_transactions if t['monto'] <= monto_max]
-            
+
     cars = car_manager.data['cars']
     customers = customer_manager.data['customers']
 
@@ -105,7 +109,27 @@ def transactions():
     if vehiculo_marca_modelo:
         filtered_transactions = [t for t in filtered_transactions if vehiculo_marca_modelo in f"{t['vehiculo']['marca'].lower()} {t['vehiculo']['modelo'].lower()}"]
 
-    return render_template('transaction/index.html', transactions=filtered_transactions)
+    total_monto = sum(t['monto'] for t in filtered_transactions)
+
+    clientes = sorted({f"{cust['nombre']} {cust['apellido']}" for cust in customers}, key=lambda x: x.lower())
+    vehiculos = sorted({f"{car['marca']} {car['modelo']}" for car in cars}, key=lambda x: x.lower())
+
+    return render_template('transaction/index.html', transactions=filtered_transactions, total_monto=total_monto, clientes=clientes, vehiculos=vehiculos)
+
+@app.route('/print_transaction/<int:transaction_id>', methods=['GET'])
+def print_transaction(transaction_id):
+    transaction = transaction_manager.find_transaction_by_id(transaction_id)
+    if not transaction:
+        flash('Transacción no encontrada.', 'error')
+        return redirect(url_for('transactions'))
+    
+    vehicle = next((car for car in car_manager.data['cars'] if car['id_vehiculo'] == transaction['id_vehiculo']), None)
+    customer = next((cust for cust in customer_manager.data['customers'] if cust['id_cliente'] == transaction['id_cliente']), None)
+    transaction['vehiculo'] = vehicle if vehicle else {"marca": "Desconocido", "modelo": ""}
+    transaction['cliente'] = customer if customer else {"nombre": "Desconocido", "apellido": ""}
+    transaction['fecha_formateada'] = datetime.strptime(transaction['fecha'], '%Y-%m-%d').strftime('%d-%m-%Y')
+
+    return render_template('transaction/ticket_transaction.html', transaction=transaction)
 
 @app.route('/store_car', methods=['GET', 'POST'])
 def store_car():
@@ -295,27 +319,6 @@ def delete_transaction(transaction_id):
         if transaction is None:
             return "Transacción no encontrada", 404
         return render_template('transaction/delete_transaction.html', transaction=transaction)
-    
-@app.route('/print_transactions/<tipo>', methods=['GET'])
-def print_transactions(tipo):
-    filtered_transactions = []
-
-    if tipo == 'venta':
-        filtered_transactions = [t for t in transaction_manager.data['transactions'] if t['tipo_transaccion'].lower() == 'venta']
-    elif tipo == 'compra':
-        filtered_transactions = [t for t in transaction_manager.data['transactions'] if t['tipo_transaccion'].lower() == 'compra']
-
-    cars = car_manager.data['cars']
-    customers = customer_manager.data['customers']
-
-    for transaction in filtered_transactions:
-        vehicle = next((car for car in cars if car['id_vehiculo'] == transaction['id_vehiculo']), None)
-        customer = next((cust for cust in customers if cust['id_cliente'] == transaction['id_cliente']), None)
-        transaction['vehiculo'] = vehicle if vehicle else {"marca": "Desconocido", "modelo": ""}
-        transaction['cliente'] = customer if customer else {"nombre": "Desconocido", "apellido": ""}
-        transaction['fecha_formateada'] = datetime.strptime(transaction['fecha'], '%Y-%m-%d').strftime('%d-%m-%Y')
-
-    return render_template('transaction/print_transactions.html', transactions=filtered_transactions, tipo=tipo)
 
 
 if __name__ == '__main__':
