@@ -19,9 +19,9 @@
         {% endif %}
     {% endwith %}
     <p>¿Estás seguro de que deseas eliminar al cliente <strong>{{ customer.nombre }} {{ customer.apellido }}</strong> con el documento <strong>{{ customer.documento }}</strong>?</p>
-    <form action="{{ url_for('delete_customer', customer_id=customer.id_cliente) }}" method="post">
+    <form action="{{ url_for('customer_bp.delete_customer', customer_id=customer.id_cliente) }}" method="post">
         <div class="button-container">
-            <a class="cancel-button" href="{{ url_for('customers') }}">Cancelar</a>
+            <a class="cancel-button" href="{{ url_for('customer_bp.customers') }}">Cancelar</a>
             <button type="submit" class="delete-button">Eliminar</button>
         </div>
     </form>

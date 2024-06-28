@@ -6,7 +6,7 @@
     <title>{% block title %}AppCar{% endblock %}</title>
     <script>
         function goToHome() {
-            window.location.href = "{{ url_for('home') }}";
+            window.location.href = "{{ url_for('main.home') }}";
         }
     </script>
     {% block head %}{% endblock %}

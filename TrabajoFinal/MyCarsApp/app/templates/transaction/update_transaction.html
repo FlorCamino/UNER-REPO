@@ -18,7 +18,7 @@
             </ul>
         {% endif %}
     {% endwith %}
-    <form action="{{ url_for('update_transaction', transaction_id=transaction.id_transaccion) }}" method="post">
+    <form action="{{ url_for('transaction_bp.update_transaction', transaction_id=transaction.id_transaccion) }}" method="post">
         <div class="form-group">
             <label for="vehiculo">Vehículo:</label>
             <select id="vehiculo" name="id_vehiculo" required>
@@ -56,7 +56,7 @@
             <input type="text" id="observaciones" name="observaciones" value="{{ transaction.observaciones }}">
         </div>
         <div class="button-container">
-            <a class="back-button" href="{{ url_for('transactions') }}">Volver</a>
+            <a class="back-button" href="{{ url_for('transaction_bp.transactions') }}">Volver</a>
             <button type="submit" class="update-button">Actualizar</button>
         </div>
     </form>

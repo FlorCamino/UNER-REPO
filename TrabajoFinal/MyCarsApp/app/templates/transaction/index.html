@@ -48,8 +48,8 @@
     <div class="header-container">
         <h1>Transacciones</h1>
         <div class="button-group">
-            <a class="add-button" href="{{ url_for('store_transaction') }}">Agregar nueva</a>
-            <button id="print-all-button" class="hidden" onclick="window.location.href='{{ url_for('print_all_transactions', **request.args) }}'">Imprimir todo</button>
+            <a class="add-button" href="{{ url_for('transaction_bp.store_transaction') }}">Agregar nueva</a>
+            <button id="print-all-button" class="hidden" onclick="window.location.href='{{ url_for('print_bp.print_all_transactions', **request.args) }}'">Imprimir todo</button>
         </div>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -62,7 +62,7 @@
         {% endif %}
     {% endwith %}
     <div class="search-container">
-        <form id="search-form" action="{{ url_for('transactions') }}" method="get">
+        <form id="search-form" action="{{ url_for('transaction_bp.transactions') }}" method="get">
             <select name="cliente_nombre">
                 <option value="">Todos los clientes</option>
                 {% for cliente in clientes %}
@@ -85,7 +85,7 @@
                 <option value="venta">Venta</option>
             </select>
             <button type="submit">Buscar</button>
-            <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('transactions') }}'">Limpiar</button>
+            <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('transaction_bp.transactions') }}'">Limpiar</button>
         </form>
     </div>
     <div id="transaction-table" class="hidden">
@@ -112,9 +112,9 @@
                         <td>{{ transaction.observaciones }}</td>
                         <td class="actions">
                             {% if transaction.id_transaccion %}
-                                <a class="button button-update" href="{{ url_for('update_transaction', transaction_id=transaction.id_transaccion) }}">Actualizar</a>
-                                <a class="button button-delete" href="{{ url_for('delete_transaction', transaction_id=transaction.id_transaccion) }}">Eliminar</a>
-                                <a class="button button-print" href="{{ url_for('print_transaction', transaction_id=transaction.id_transaccion) }}">Imprimir</a>
+                                <a class="button button-update" href="{{ url_for('transaction_bp.update_transaction', transaction_id=transaction.id_transaccion) }}">Actualizar</a>
+                                <a class="button button-delete" href="{{ url_for('transaction_bp.delete_transaction', transaction_id=transaction.id_transaccion) }}">Eliminar</a>
+                                <a class="button button-print" href="{{ url_for('print_bp.print_transaction', transaction_id=transaction.id_transaccion) }}">Imprimir</a>
                             {% else %}
                                 ID de transacción no disponible
                             {% endif %}

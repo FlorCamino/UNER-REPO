@@ -10,7 +10,7 @@
 <div class="container">
     <div class="header-container">
         <h1>Vehículos</h1>
-        <a class="add-button" href="{{ url_for('store_car') }}">Agregar un nuevo vehículo</a>
+        <a class="add-button" href="{{ url_for('car_bp.store_car') }}">Agregar un nuevo vehículo</a>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -22,7 +22,7 @@
         {% endif %}
     {% endwith %}
     <div class="search-container">
-        <form action="{{ url_for('cars') }}" method="get">
+        <form action="{{ url_for('car_bp.cars') }}" method="get">
             <input type="text" name="patente" placeholder="Buscar por patente">
             <input type="text" name="marca" placeholder="Buscar por marca">
             <input type="text" name="modelo" placeholder="Buscar por modelo">
@@ -31,7 +31,7 @@
             <input type="number" name="precio_venta_min" placeholder="Precio de venta mínimo">
             <input type="number" name="precio_venta_max" placeholder="Precio de venta máximo">
             <button type="submit">Buscar</button>
-            <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('cars') }}'">Limpiar</button>
+            <button type="button" class="clear-button" onclick="window.location.href='{{ url_for('car_bp.cars') }}'">Limpiar</button>
         </form>
     </div>
     <table>
@@ -62,8 +62,8 @@
                     <td>US${{ car.precio_venta }}</td>
                     <td>{{ car.estado }}</td>
                     <td>
-                        <a class="button button-update" href="{{ url_for('update_car', car_id=car.id_vehiculo) }}">Actualizar</a>
-                        <a class="button button-delete" href="{{ url_for('delete_car', car_id=car.id_vehiculo) }}">Eliminar</a>
+                        <a class="button button-update" href="{{ url_for('car_bp.update_car', car_id=car.id_vehiculo) }}">Actualizar</a>
+                        <a class="button button-delete" href="{{ url_for('car_bp.delete_car', car_id=car.id_vehiculo) }}">Eliminar</a>
                     </td>
                 </tr>
             {% endfor %}

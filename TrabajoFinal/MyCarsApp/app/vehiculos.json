@@ -13,18 +13,6 @@
             "id_vehiculo": 1
         },
         {
-            "patente": "XYZ789",
-            "marca": "Ford",
-            "modelo": "Focus",
-            "tipo": "Hatchback",
-            "anio": 2017,
-            "kilometraje": 50000,
-            "precio_compra": 14000,
-            "precio_venta": 72000,
-            "estado": "Vendido",
-            "id_vehiculo": 3
-        },
-        {
             "patente": "TDX865",
             "marca": "Ford",
             "modelo": "Fiesta",
@@ -61,5 +49,5 @@
             "id_vehiculo": 7
         }
     ],
-    "last_id": 11
+    "last_id": 12
 }

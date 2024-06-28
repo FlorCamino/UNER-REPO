@@ -18,7 +18,7 @@
             </ul>
         {% endif %}
     {% endwith %}
-    <form action="{{ url_for('store_car') }}" method="post">
+    <form action="{{ url_for('car_bp.store_car') }}" method="post">
         <div class="form-group">
             <label for="patente">Patente:</label>
             <input type="text" id="patente" name="patente" required>
@@ -60,7 +60,7 @@
             <input type="text" id="estado" name="estado" required>
         </div>
         <div class="button-container">
-            <a class="back-button" href="{{ url_for('cars') }}">Volver</a>
+            <a class="back-button" href="{{ url_for('car_bp.cars') }}">Volver</a>
             <button type="submit" class="store-button">Guardar</button>
         </div>
     </form>

@@ -18,7 +18,7 @@
             </ul>
         {% endif %}
     {% endwith %}
-    <form action="{{ url_for('update_car', car_id=car.id_vehiculo) }}" method="post">
+    <form action="{{ url_for('car_bp.update_car', car_id=car.id_vehiculo) }}" method="post">
         <div class="form-group">
             <label for="patente">Patente:</label>
             <input type="text" id="patente" name="patente" value="{{ car.patente }}" required>
@@ -60,7 +60,7 @@
             <input type="text" id="estado" name="estado" value="{{ car.estado }}" required>
         </div>
         <div class="button-container">
-            <a class="back-button" href="{{ url_for('cars') }}">Volver</a>
+            <a class="back-button" href="{{ url_for('car_bp.cars') }}">Volver</a>
             <button type="submit" class="update-button">Actualizar</button>
         </div>
     </form>

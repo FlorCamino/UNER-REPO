@@ -18,7 +18,7 @@
             </ul>
         {% endif %}
     {% endwith %}
-    <form action="{{ url_for('update_customer', customer_id=customer.id_cliente) }}" method="post">
+    <form action="{{ url_for('customer_bp.update_customer', customer_id=customer.id_cliente) }}" method="post">
         <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" value="{{ customer.nombre }}" required>
@@ -44,7 +44,7 @@
             <input type="email" id="correo_electronico" name="correo_electronico" value="{{ customer.correo_electronico }}" required>
         </div>
         <div class="button-container">
-            <a class="back-button" href="{{ url_for('customers') }}">Volver</a>
+            <a class="back-button" href="{{ url_for('customer_bp.customers') }}">Volver</a>
             <button type="submit" class="update-button">Actualizar</button>
         </div>
     </form>

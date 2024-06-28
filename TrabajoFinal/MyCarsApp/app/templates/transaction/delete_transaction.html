@@ -19,9 +19,9 @@
         {% endif %}
     {% endwith %}
     <p>¿Estás seguro de que deseas eliminar la transacción de tipo <strong>{{ transaction.tipo_transaccion }}</strong> realizada el <strong>{{ transaction.fecha }}</strong> con un monto de <strong>US${{ transaction.monto }}</strong>?</p>
-    <form action="{{ url_for('delete_transaction', transaction_id=transaction.id_transaccion) }}" method="post">
+    <form action="{{ url_for('transaction_bp.delete_transaction', transaction_id=transaction.id_transaccion) }}" method="post">
         <div class="button-container">
-            <a class="cancel-button" href="{{ url_for('transactions') }}">Cancelar</a>
+            <a class="cancel-button" href="{{ url_for('transaction_bp.transactions') }}">Cancelar</a>
             <button type="submit" class="delete-button">Eliminar</button>
         </div>
     </form>
