@@ -115,7 +115,8 @@ footer ul {
     gap: 10px; 
 }
 
-.add-button {
+.add-button, 
+#print-all-button {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
@@ -126,7 +127,8 @@ footer ul {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.add-button:hover {
+.add-button:hover,
+#print-all-button:hover {
     background-color: #45a049;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }

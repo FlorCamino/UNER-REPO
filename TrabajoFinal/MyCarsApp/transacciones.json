@@ -37,7 +37,7 @@
             "id_cliente": 2,
             "tipo_transaccion": "Venta",
             "fecha": "2024-01-20",
-            "monto": 14000.0,
+            "monto": 15000.0,
             "observaciones": "Compra registrada.",
             "vehiculo": {
                 "patente": "TDX865",

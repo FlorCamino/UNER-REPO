@@ -10,6 +10,7 @@
         const transactionTable = document.getElementById('transaction-table');
         const totalContainer = document.getElementById('total-container');
         const tableHeader = document.getElementById('table-header');
+        const printAllButton = document.getElementById('print-all-button');
         
         form.addEventListener('submit', function(event) {
             const tipoTransaccion = document.querySelector('select[name="tipo_transaccion"]').value;
@@ -31,10 +32,12 @@
             transactionTable.classList.remove('hidden');
             totalContainer.classList.remove('hidden');
             tableHeader.classList.remove('hidden');
+            printAllButton.classList.remove('hidden');
         } else {
             transactionTable.classList.add('hidden');
             totalContainer.classList.add('hidden');
             tableHeader.classList.add('hidden');
+            printAllButton.classList.add('hidden');
         }
     });
 </script>
@@ -46,6 +49,7 @@
         <h1>Transacciones</h1>
         <div class="button-group">
             <a class="add-button" href="{{ url_for('store_transaction') }}">Agregar nueva</a>
+            <button id="print-all-button" class="hidden" onclick="window.location.href='{{ url_for('print_all_transactions', **request.args) }}'">Imprimir todo</button>
         </div>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}

@@ -1,59 +1,130 @@
-{% extends "base.html" %}
-
-{% block title %}
-    {% if tipo == 'venta' %}
-        Transacciones de Venta
-    {% elif tipo == 'compra' %}
-        Transacciones de Compra
-    {% endif %}
-{% endblock %}
-
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-{% endblock %}
-
-{% block content %}
-<div class="container">
-    <div class="header-container">
-        <h1>{% if tipo == 'venta' %} Transacciones de Venta {% elif tipo == 'compra' %} Transacciones de Compra {% endif %}</h1>
-    </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Vehículo</th>
-                <th>Cliente</th>
-                <th>Tipo de Transacción</th>
-                <th>Fecha</th>
-                <th>Monto</th>
-                <th>Observaciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for transaction in transactions %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobante de Transacciones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/print.css') }}">
+</head>
+<body>
+    {% for cliente_id, data in grouped_transactions.items() %}
+    <div class="container">
+        <div class="header">
+            <img src="{{ url_for('static', filename='images/car_image.png') }}" alt="AppCar Logo">
+            <div>
+                <h2>AppCar</h2>
+                <p>C.U.I.T.: 736284542</p>
+                <p>Dirección: 9 de Julio 2321, CP 2393, Buenos Aires</p>
+                <p>Teléfono: 324245</p>
+            </div>
+        </div>
+        <h3>Comprobante de Transacciones</h3>
+        <div class="client-details">
+            <h3>Detalles del Cliente</h3>
+            <table class="bordered-table">
                 <tr>
-                    <td>{{ transaction.vehiculo.marca if transaction.vehiculo else 'Desconocido' }} {{ transaction.vehiculo.modelo if transaction.vehiculo else '' }}</td>
-                    <td>{{ transaction.cliente.nombre if transaction.cliente else 'Desconocido' }} {{ transaction.cliente.apellido if transaction.cliente else '' }}</td>
-                    <td>{{ transaction.tipo_transaccion }}</td>
-                    <td>{{ transaction.fecha_formateada }}</td>
-                    <td>US${{ transaction.monto }}</td>
-                    <td>{{ transaction.observaciones }}</td>
+                    <th>Nombre:</th>
+                    <td>{{ data.cliente.nombre }}</td>
+                    <th>Apellido:</th>
+                    <td>{{ data.cliente.apellido }}</td>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <div class="button-container">
-        <a class="back-button" href="{{ url_for('transactions') }}">Volver</a>
-        <button class="print-button">Imprimir</button>
+                <tr>
+                    <th>Documento:</th>
+                    <td>{{ data.cliente.documento }}</td>
+                    <th>Dirección:</th>
+                    <td>{{ data.cliente.direccion }}</td>
+                </tr>
+                <tr>
+                    <th>Teléfono:</th>
+                    <td>{{ data.cliente.telefono }}</td>
+                    <th>Correo Electrónico:</th>
+                    <td>{{ data.cliente.correo }}</td>
+                </tr>
+            </table>
+        </div>
+        {% for transaction in data.transacciones %}
+        <div class="vehicle-details">
+            <h3>Detalles del Vehículo</h3>
+            <table class="bordered-table">
+                <tr>
+                    <th>Marca:</th>
+                    <td>{{ transaction.vehiculo.marca }}</td>
+                    <th>Modelo:</th>
+                    <td>{{ transaction.vehiculo.modelo }}</td>
+                </tr>
+                <tr>
+                    <th>Tipo:</th>
+                    <td>{{ transaction.vehiculo.tipo }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="details">
+            <table class="bordered-table">
+                <tr>
+                    <th>Tipo de Transacción:</th>
+                    <td>{{ transaction.tipo_transaccion }}</td>
+                    <th>Número:</th>
+                    <td>{{ transaction.id_transaccion }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha de Emisión:</th>
+                    <td>{{ transaction.fecha_formateada }}</td>
+                    <th>Estado:</th>
+                    <td>Procesado</td>
+                </tr>
+                <tr>
+                    <th>Resumen:</th>
+                    <td>{{ transaction.observaciones }}</td>
+                    <th>Fecha de Vencimiento:</th>
+                    <td>{{ transaction.fecha_formateada }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="accounting-details">
+            <h3>Detalles Contables</h3>
+            <table class="bordered-table">
+                <tr>
+                    <th>Código de la Cuenta</th>
+                    <th>Nombre de la Cuenta Contable</th>
+                    <th>Total Debe</th>
+                    <th>Total Haber</th>
+                </tr>
+                <tr>
+                    <td>17892864839274</td>
+                    <td>Detalle del comprobante</td>
+                    <td>0,00</td>
+                    <td>{{ transaction.monto }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="summary">
+            <table class="bordered-table">
+                <tr>
+                    <th>Subtotal por Centro de Costo:</th>
+                    <td>{{ transaction.monto }}</td>
+                </tr>
+                <tr>
+                    <th>Diferencia:</th>
+                    <td>0,00</td>
+                </tr>
+            </table>
+        </div>
+        {% endfor %}
     </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const printButton = document.querySelector('.print-button');
-    printButton.addEventListener('click', function() {
-        window.print();
-    });
-});
-</script>
-
-{% endblock %}
+    {% endfor %}
+    <div class="container totals">
+        <h3>Total Ventas: US${{ total_ventas }}</h3>
+        <h3>Total Compras: US${{ total_compras }}</h3>
+    </div>
+    <div class="buttons">
+        <button class="back-button" onclick="window.location.href='{{ url_for('transactions') }}'">Volver</button>
+        <button class="print-button" onclick="window.print()">Imprimir</button>
+    </div>
+    
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
