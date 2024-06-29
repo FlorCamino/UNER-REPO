@@ -12,7 +12,7 @@
         {
             "nombre": "Juan",
             "apellido": "P\u00e9rez",
-            "documento": "45787425",
+            "documento": "25787425",
             "direccion": "9 de julio 421",
             "telefono": "257-382",
             "correo_electronico": "juan.perez@gmail.com",
@@ -37,5 +37,5 @@
             "id_cliente": 6
         }
     ],
-    "last_id": 6
+    "last_id": 7
 }

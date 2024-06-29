@@ -185,7 +185,16 @@
                 "id_cliente": 5
             },
             "fecha_formateada": "19-06-2024"
+        },
+        {
+            "id_vehiculo": 6,
+            "id_cliente": 6,
+            "tipo_transaccion": "Venta",
+            "fecha": "2024-06-10",
+            "monto": 32145.0,
+            "observaciones": "Ejemplo",
+            "id_transaccion": 11
         }
     ],
-    "last_id": 10
+    "last_id": 11
 }

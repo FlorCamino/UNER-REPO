@@ -33,7 +33,7 @@
             "kilometraje": 60000,
             "precio_compra": 12000,
             "precio_venta": 15000,
-            "estado": "Disponible",
+            "estado": "Reservado",
             "id_vehiculo": 6
         },
         {
