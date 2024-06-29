@@ -89,7 +89,7 @@ def store_transaction():
                 flash('La transacción ya existe!', 'danger')
         except Exception as e:
             flash(str(e), 'danger')
-        return redirect(url_for('transactions'))
+        return redirect(url_for('transaction_bp.transactions'))
     
     available_cars = [car for car in car_manager.data['cars'] if car['estado'].lower() == 'disponible']
     clientes = customer_manager.data['customers']
@@ -108,7 +108,7 @@ def update_transaction(transaction_id):
             "observaciones": request.form['observaciones']
         }
         update_success = transaction_manager.update_transaction(transaction_id, updated_params)
-        return redirect(url_for('transactions'))
+        return redirect(url_for('transaction_bp.transactions'))
     else:
         transaction = next((t for t in transaction_manager.data['transactions'] if t['id_transaccion'] == transaction_id), None)
         if transaction is None:
@@ -128,7 +128,7 @@ def delete_transaction(transaction_id):
             flash('Transaccción eliminada exitosamente!', 'success')
         else:
             flash('Error al eliminar la transacción', 'danger')
-        return redirect(url_for('transactions'))
+        return redirect(url_for('transaction_bp.transactions'))
     else:
         transaction = transaction_manager.find_transaction_by_id(transaction_id)
         if transaction is None:

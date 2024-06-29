@@ -14,7 +14,7 @@ def print_transaction(transaction_id):
     transaction = transaction_manager.find_transaction_by_id(transaction_id)
     if not transaction:
         flash('Transacción no encontrada.', 'error')
-        return redirect(url_for('transactions'))
+        return redirect(url_for('transaction_bp.transactions'))
     
     vehicle = next((car for car in car_manager.data['cars'] if car['id_vehiculo'] == transaction['id_vehiculo']), None)
     customer = next((cust for cust in customer_manager.data['customers'] if cust['id_cliente'] == transaction['id_cliente']), None)

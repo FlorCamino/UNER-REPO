@@ -50,5 +50,6 @@ Programación I
 
 1. Ejecuta el siguiente comando:
    ```sh
-   python app.py
+   pip install -r requirements.txt
+   python main.py
 2. Abre tu navegador web y visita http://127.0.0.1:5000.

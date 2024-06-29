@@ -1,0 +1,41 @@
+{
+    "customers": [
+        {
+            "nombre": "Florencia",
+            "apellido": "Camino",
+            "documento": "37233821",
+            "direccion": "Rep\u00fablica de Chile 214",
+            "telefono": "542-363",
+            "correo_electronico": "flor.camino@gmail.com",
+            "id_cliente": 3
+        },
+        {
+            "nombre": "Juan",
+            "apellido": "P\u00e9rez",
+            "documento": "45787425",
+            "direccion": "9 de julio 421",
+            "telefono": "257-382",
+            "correo_electronico": "juan.perez@gmail.com",
+            "id_cliente": 4
+        },
+        {
+            "nombre": "Linda",
+            "apellido": "Colman",
+            "documento": "338265456",
+            "direccion": "Finoccio 2434",
+            "telefono": "362-926",
+            "correo_electronico": "linda.colman@gmail.com",
+            "id_cliente": 5
+        },
+        {
+            "nombre": "Teresa Lorena",
+            "apellido": "Fleitas",
+            "documento": "27462059",
+            "direccion": "Sauce viejo 3861",
+            "telefono": "723-082",
+            "correo_electronico": "teresa.fleitas@gmail.com",
+            "id_cliente": 6
+        }
+    ],
+    "last_id": 6
+}

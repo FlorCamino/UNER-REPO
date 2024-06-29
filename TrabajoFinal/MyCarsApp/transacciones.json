@@ -1,0 +1,191 @@
+{
+    "transactions": [
+        {
+            "id_transaccion": 1,
+            "id_vehiculo": 1,
+            "id_cliente": 4,
+            "tipo_transaccion": "Venta",
+            "fecha": "2024-01-15",
+            "monto": 15000.0,
+            "observaciones": "Venta realizada con \u00e9xito.",
+            "vehiculo": {
+                "patente": "ABC721",
+                "marca": "Chevrolet",
+                "modelo": "S10",
+                "tipo": "Pickup",
+                "anio": 2019,
+                "kilometraje": 90000,
+                "precio_compra": 50000,
+                "precio_venta": 75000,
+                "estado": "Reservado",
+                "id_vehiculo": 1
+            },
+            "cliente": {
+                "nombre": "Juan",
+                "apellido": "P\u00e9rez",
+                "documento": "45787425",
+                "direccion": "9 de julio 421",
+                "telefono": "257-382",
+                "correo_electronico": "juan.perez@gmail.com",
+                "id_cliente": 4
+            },
+            "fecha_formateada": "15-01-2024"
+        },
+        {
+            "id_transaccion": 2,
+            "id_vehiculo": 5,
+            "id_cliente": 3,
+            "tipo_transaccion": "Venta",
+            "fecha": "2024-01-20",
+            "monto": 15000.0,
+            "observaciones": "Compra registrada.",
+            "vehiculo": {
+                "patente": "TDX865",
+                "marca": "Ford",
+                "modelo": "Fiesta",
+                "tipo": "Hatchback",
+                "anio": 2003,
+                "kilometraje": 130000,
+                "precio_compra": 7000,
+                "precio_venta": 8000,
+                "estado": "Vendido",
+                "id_vehiculo": 5
+            },
+            "cliente": {
+                "nombre": "Florencia",
+                "apellido": "Camino",
+                "documento": "37233821",
+                "direccion": "Rep\u00fablica de Chile 214",
+                "telefono": "542-363",
+                "correo_electronico": "flor.camino@gmail.com",
+                "id_cliente": 3
+            },
+            "fecha_formateada": "20-01-2024"
+        },
+        {
+            "id_transaccion": 3,
+            "id_vehiculo": 6,
+            "id_cliente": 3,
+            "tipo_transaccion": "Compra",
+            "fecha": "2024-06-21",
+            "monto": 40000.0,
+            "observaciones": "No es un campo obligatorio",
+            "vehiculo": {
+                "patente": "IVE733",
+                "marca": "Peugeot",
+                "modelo": "207",
+                "tipo": "Sed\u00e1n",
+                "anio": 2019,
+                "kilometraje": 60000,
+                "precio_compra": 12000,
+                "precio_venta": 15000,
+                "estado": "Disponible",
+                "id_vehiculo": 6
+            },
+            "cliente": {
+                "nombre": "Florencia",
+                "apellido": "Camino",
+                "documento": "37233821",
+                "direccion": "Rep\u00fablica de Chile 214",
+                "telefono": "542-363",
+                "correo_electronico": "flor.camino@gmail.com",
+                "id_cliente": 3
+            },
+            "fecha_formateada": "21-06-2024"
+        },
+        {
+            "id_vehiculo": 7,
+            "id_cliente": 6,
+            "tipo_transaccion": "Compra",
+            "fecha": "2024-06-13",
+            "monto": 39000.0,
+            "observaciones": "Esta es una prueba",
+            "id_transaccion": 6,
+            "vehiculo": {
+                "patente": "XAP156",
+                "marca": "VOLKSWAGEN",
+                "modelo": "TAOS",
+                "tipo": "SED\u00c1N",
+                "anio": 2022,
+                "kilometraje": 82000,
+                "precio_compra": 38000,
+                "precio_venta": 37100,
+                "estado": "Disponible",
+                "id_vehiculo": 7
+            },
+            "cliente": {
+                "nombre": "Teresa Lorena",
+                "apellido": "Fleitas",
+                "documento": "27462059",
+                "direccion": "Sauce viejo 3861",
+                "telefono": "723-082",
+                "correo_electronico": "teresa.fleitas@gmail.com",
+                "id_cliente": 6
+            },
+            "fecha_formateada": "13-06-2024"
+        },
+        {
+            "id_vehiculo": 1,
+            "id_cliente": 6,
+            "tipo_transaccion": "Venta",
+            "fecha": "2024-06-13",
+            "monto": 58000.0,
+            "observaciones": "Pruebas",
+            "id_transaccion": 9,
+            "vehiculo": {
+                "patente": "ABC721",
+                "marca": "Chevrolet",
+                "modelo": "S10",
+                "tipo": "Pickup",
+                "anio": 2019,
+                "kilometraje": 90000,
+                "precio_compra": 50000,
+                "precio_venta": 75000,
+                "estado": "Reservado",
+                "id_vehiculo": 1
+            },
+            "cliente": {
+                "nombre": "Teresa Lorena",
+                "apellido": "Fleitas",
+                "documento": "27462059",
+                "direccion": "Sauce viejo 3861",
+                "telefono": "723-082",
+                "correo_electronico": "teresa.fleitas@gmail.com",
+                "id_cliente": 6
+            },
+            "fecha_formateada": "13-06-2024"
+        },
+        {
+            "id_vehiculo": 7,
+            "id_cliente": 5,
+            "tipo_transaccion": "Compra",
+            "fecha": "2024-06-19",
+            "monto": 44000.0,
+            "observaciones": "Compra aprobada",
+            "id_transaccion": 10,
+            "vehiculo": {
+                "patente": "XAP156",
+                "marca": "VOLKSWAGEN",
+                "modelo": "TAOS",
+                "tipo": "SED\u00c1N",
+                "anio": 2022,
+                "kilometraje": 82000,
+                "precio_compra": 38000,
+                "precio_venta": 37100,
+                "estado": "Disponible",
+                "id_vehiculo": 7
+            },
+            "cliente": {
+                "nombre": "Linda",
+                "apellido": "Colman",
+                "documento": "338265456",
+                "direccion": "Finoccio 2434",
+                "telefono": "362-926",
+                "correo_electronico": "linda.colman@gmail.com",
+                "id_cliente": 5
+            },
+            "fecha_formateada": "19-06-2024"
+        }
+    ],
+    "last_id": 10
+}
